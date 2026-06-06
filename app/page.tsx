@@ -59,6 +59,7 @@ export default function HomePage() {
     setInitialFormValues({ 
       examType: 'JEE',
       examPhase: 'Mock Test Week',
+      studyHoursPlanned: 8,
       mood: 'Anxious',
       stressLevel: 9,
       anxietyLevel: 8,
@@ -66,8 +67,8 @@ export default function HomePage() {
       sleepQuality: 4,
       focusLevel: 5,
       confidenceLevel: 3,
-      triggers: ['Mock test score', 'Syllabus backlog'],
-      reflection: "I feel like everyone is ahead of me. My mock score dropped again and I feel like I wasted my parents’ money."
+      triggers: ['Mock test score', 'Syllabus backlog', 'Comparison with friends', 'Parental pressure'],
+      reflection: "I feel like everyone is ahead of me. My mock score dropped again and I feel like I wasted my parents' money."
     });
     setView('checkin');
     window.scrollTo({ top: 0, behavior: 'smooth' });

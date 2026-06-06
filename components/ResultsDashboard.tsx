@@ -119,65 +119,73 @@ export default function ResultsDashboard({
         aria-live="polite"
         aria-label="Your personalised wellness plan"
       >
-        {/* 1. Stress loop card */}
-        {plan.detectedStressLoop && (
-          <motion.div variants={itemVariants} className="card-hover rounded-2xl">
-            <StressLoopCard loop={plan.detectedStressLoop} />
+        {plan.safetySupport.level === 'crisis' ? (
+          <motion.div variants={itemVariants} className="pt-6">
+            <SupportResources showAll={true} />
           </motion.div>
-        )}
+        ) : (
+          <>
+            {/* 1. Stress loop card */}
+            {plan.detectedStressLoop && (
+              <motion.div variants={itemVariants} className="card-hover rounded-2xl">
+                <StressLoopCard loop={plan.detectedStressLoop} />
+              </motion.div>
+            )}
 
-        {/* 2. Safe Action Card */}
-        <motion.div variants={itemVariants}>
-          <SafeActionCard actionText={safeAction} />
-        </motion.div>
-
-        {/* 3. Reset Tool */}
-        <motion.div variants={itemVariants} className="card-hover rounded-3xl overflow-hidden border border-[var(--color-card-border)] bg-[var(--color-card)]">
-          <ResetTool />
-        </motion.div>
-
-        {/* 4. Evidence mode toggle */}
-        <motion.div variants={itemVariants} className="pt-4 border-t border-[var(--color-card-border)]">
-          <button
-            onClick={() => setShowEvidence(!showEvidence)}
-            className="text-xs font-medium text-[var(--color-subtle)] hover:text-[var(--color-text)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] rounded px-2 py-1"
-            aria-expanded={showEvidence}
-          >
-            {showEvidence ? '▲ Hide engine evidence' : '▼ Why was this plan generated?'}
-          </button>
-          {showEvidence && (
-            <motion.div 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              className="mt-3 overflow-hidden"
-            >
-              <EvidenceMode evidenceItems={plan.evidenceItems} />
+            {/* 2. Safe Action Card */}
+            <motion.div variants={itemVariants}>
+              <SafeActionCard actionText={safeAction} />
             </motion.div>
-          )}
-        </motion.div>
 
-        {/* Other context cards: Trigger Map & Reflection */}
-        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="card-hover rounded-2xl h-full">
-            <TriggerMap analysis={plan.triggerAnalysis} />
-          </div>
-          <div className="bg-[var(--color-card)] rounded-2xl p-5 border border-[var(--color-card-border)] shadow-sm card-hover flex flex-col justify-center">
-            <h2 className="text-sm font-bold text-[var(--color-text)] mb-3">Reflection Insight</h2>
-            <p className="text-sm text-[var(--color-muted)] leading-relaxed italic">
-              &ldquo;{plan.reflectionInsight}&rdquo;
-            </p>
-          </div>
-        </motion.div>
+            {/* 3. Reset Tool */}
+            <motion.div variants={itemVariants} className="card-hover rounded-3xl overflow-hidden border border-[var(--color-card-border)] bg-[var(--color-card)]">
+              <ResetTool />
+            </motion.div>
 
-        {/* Journey dashboard */}
-        <motion.div variants={itemVariants} className="card-hover rounded-2xl">
-          <JourneyDashboard stats={journeyStats} onClearData={onClearData} />
-        </motion.div>
+            {/* 4. Evidence mode toggle */}
+            <motion.div variants={itemVariants} className="pt-4 border-t border-[var(--color-card-border)]">
+              <button
+                onClick={() => setShowEvidence(!showEvidence)}
+                className="text-xs font-medium text-[var(--color-subtle)] hover:text-[var(--color-text)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] rounded px-2 py-1"
+                aria-expanded={showEvidence}
+              >
+                {showEvidence ? '▲ Hide engine evidence' : '▼ Why was this plan generated?'}
+              </button>
+              {showEvidence && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  className="mt-3 overflow-hidden"
+                >
+                  <EvidenceMode evidenceItems={plan.evidenceItems} />
+                </motion.div>
+              )}
+            </motion.div>
 
-        {/* Support resources */}
-        <motion.div variants={itemVariants}>
-          <SupportResources showAll={false} />
-        </motion.div>
+            {/* Other context cards: Trigger Map & Reflection */}
+            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="card-hover rounded-2xl h-full">
+                <TriggerMap analysis={plan.triggerAnalysis} />
+              </div>
+              <div className="bg-[var(--color-card)] rounded-2xl p-5 border border-[var(--color-card-border)] shadow-sm card-hover flex flex-col justify-center">
+                <h2 className="text-sm font-bold text-[var(--color-text)] mb-3">Reflection Insight</h2>
+                <p className="text-sm text-[var(--color-muted)] leading-relaxed italic">
+                  &ldquo;{plan.reflectionInsight}&rdquo;
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Journey dashboard */}
+            <motion.div variants={itemVariants} className="card-hover rounded-2xl">
+              <JourneyDashboard stats={journeyStats} onClearData={onClearData} />
+            </motion.div>
+
+            {/* Support resources */}
+            <motion.div variants={itemVariants}>
+              <SupportResources showAll={false} />
+            </motion.div>
+          </>
+        )}
       </motion.div>
 
       {/* CTA */}

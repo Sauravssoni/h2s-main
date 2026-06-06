@@ -170,7 +170,7 @@ See [TESTING.md](TESTING.md) for the full automated, manual, security, and abuse
 1. Open the app → Click **Try Sample Student** (JEE · Mock Test Week)
 2. Check-in is pre-filled with: Anxious mood, Stress 8/10, Confidence 3/10
 3. Triggers: Mock test score, Syllabus backlog, Comparison with friends, Parental pressure
-4. Reflection: "I feel like everyone is ahead of me and my mock score is not improving."
+4. Reflection: "I feel like everyone is ahead of me. My mock score dropped again and I feel like I wasted my parents' money."
 5. Click **Generate Wellness Plan**
 6. See: Status "Heavy day" → Trigger Map → Panic-to-Plan → 3-Step Reset → Study Plan
 7. Show Journey Dashboard (empty on first run, builds over time)

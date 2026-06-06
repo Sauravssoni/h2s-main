@@ -148,17 +148,20 @@ See [ACCESSIBILITY.md](ACCESSIBILITY.md) for details.
 
 ---
 
-## Testing Commands
+## Testing
+
+PrepBuddy includes automated tests for the risk detector, validation layer, deterministic wellness engine, stress-loop detection, storage helpers, and AI fallback safety. Manual test cases are documented in TESTING.md.
+
+Run:
 
 ```bash
-npm run test           # Run all 93 tests once
-npm run test:watch     # Watch mode
-npm run typecheck      # TypeScript strict check
-npm run lint           # ESLint
-npm run build          # Production build
+npm run typecheck
+npm run lint
+npm run test
+npm run build
 ```
 
-See [TESTING.md](TESTING.md) for test coverage details.
+See [TESTING.md](TESTING.md) for the full automated, manual, security, and abuse testing checklist.
 
 ---
 

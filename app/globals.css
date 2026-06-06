@@ -43,6 +43,7 @@ body {
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
@@ -144,6 +145,22 @@ input[type='range']:focus-visible {
 
 .animate-fade-in {
   animation: fade-in 0.4s ease forwards;
+}
+
+/* ─── Shimmer ─── */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear forwards;
+  background: linear-gradient(to right, var(--color-card) 4%, #F5F3ED 25%, var(--color-card) 36%);
+  background-size: 1000px 100%;
 }
 
 /* ─── Pulse ring (crisis card) ─── */

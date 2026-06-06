@@ -1,5 +1,4 @@
-// PrepPulse — Core TypeScript Types
-// Strict mode: no 'any', no loose typing
+// PrepBuddy — Core TypeScript Types
 
 export type ExamType =
   | 'JEE'
@@ -51,27 +50,77 @@ export type WellnessStatus =
 
 export type SupportLevel = 'normal' | 'elevated' | 'crisis';
 
+export type MascotName =
+  | 'Resilient Falcon'
+  | 'Calm Tiger'
+  | 'Steady Lotus'
+  | 'Brave Banyan'
+  | 'Focused Comet'
+  | 'Quiet Phoenix'
+  | 'Grounded Whale';
+
+export type ResetFeelingLabel =
+  | 'Anxious'
+  | 'Defeated'
+  | 'Angry'
+  | 'Numb'
+  | 'Overwhelmed';
+
+// ─── Stress Loops ───
+
+export type StressLoopId =
+  | 'score-rumination'
+  | 'backlog-paralysis'
+  | 'insomnia-fatigue'
+  | 'result-limbo'
+  | 'expectation-pressure'
+  | 'exam-freeze';
+
+export interface DetectedStressLoop {
+  id: StressLoopId;
+  name: string;
+  chain: string;
+  action: string;
+}
+
+// ─── Hidden Pain Points ───
+
+export type PainPointId =
+  | 'mock-hangover'
+  | 'silent-guilt'
+  | 'insomnia-loop'
+  | 'peer-isolation'
+  | 'result-limbo'
+  | 'imposter-revision'
+  | 'somatic-stress'
+  | 'rank-self-worth'
+  | 'toxic-hustle'
+  | 'exam-freeze';
+
+export interface DetectedPainPoint {
+  id: PainPointId;
+  message: string;
+  action: string;
+}
+
+// ─── Check-In Input ───
+
 export interface StudentCheckInInput {
-  // Step 1: Exam Context
   examType: ExamType;
   examPhase: ExamPhase;
-  studyHoursPlanned: number; // 0–16
-
-  // Step 2: Mind & Body
+  studyHoursPlanned: number;
   mood: MoodLabel;
-  stressLevel: number; // 1–10
-  anxietyLevel: number; // 1–10
-  energyLevel: number; // 1–10
-  sleepQuality: number; // 1–10
-  focusLevel: number; // 1–10
-  confidenceLevel: number; // 1–10
-
-  // Step 3: Triggers
+  stressLevel: number;
+  anxietyLevel: number;
+  energyLevel: number;
+  sleepQuality: number;
+  focusLevel: number;
+  confidenceLevel: number;
   triggers: StressTrigger[];
-
-  // Step 4: Reflection
-  reflection: string; // max 1000 chars after sanitization
+  reflection: string;
 }
+
+// ─── Wellness Plan ───
 
 export interface WellnessSnapshot {
   status: WellnessStatus;
@@ -111,6 +160,14 @@ export interface CalmExercise {
   duration: string;
 }
 
+export interface SupportResource {
+  name: string;
+  contact: string;
+  telLink?: string;
+  note: string;
+  showFor?: ExamType[];
+}
+
 export interface SafetySupport {
   level: SupportLevel;
   message: string;
@@ -119,17 +176,17 @@ export interface SafetySupport {
   panicToPlan: PanicToPlan | null;
 }
 
-export interface SupportResource {
-  name: string;
-  contact: string;
-  note: string;
-}
-
 export interface PanicToPlan {
   breathingStep: string;
   controllableAction: string;
   recoveryAction: string;
   shareableMessage: string;
+}
+
+export interface EvidenceItem {
+  label: string;
+  value: string | number;
+  signal: 'high' | 'medium' | 'low' | 'neutral';
 }
 
 export interface WellnessPlan {
@@ -141,14 +198,20 @@ export interface WellnessPlan {
   calmExercise: CalmExercise;
   safetySupport: SafetySupport;
   examPhaseProtocol: string;
-  generatedAt: string; // ISO string
+  detectedStressLoop: DetectedStressLoop | null;
+  detectedPainPoints: DetectedPainPoint[];
+  evidenceItems: EvidenceItem[];
+  generatedAt: string;
 }
+
+// ─── Journey ───
 
 export interface JourneyEntry {
   id: string;
-  date: string; // ISO date string
+  date: string;
   checkIn: StudentCheckInInput;
   plan: WellnessPlan;
+  mascotName?: MascotName;
 }
 
 export interface JourneyStats {
@@ -163,6 +226,18 @@ export interface JourneyStats {
   improvementNote: string;
 }
 
+export interface MentorSummary {
+  averageStress: number;
+  averageSleep: number;
+  averageConfidence: number;
+  topTriggers: StressTrigger[];
+  recentReflectionSummary: string;
+  recurringLoop: string;
+  suggestedSupport: string;
+}
+
+// ─── API ───
+
 export interface ApiRequest {
   checkIn: StudentCheckInInput;
 }
@@ -176,4 +251,12 @@ export interface ApiError {
   success: false;
   error: string;
   code: 'VALIDATION_ERROR' | 'RATE_LIMIT' | 'INTERNAL_ERROR';
+}
+
+// ─── Profile ───
+
+export interface StudentProfile {
+  mascotName: MascotName;
+  examType: ExamType;
+  createdAt: string;
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShieldCheck, Target, Activity, Lock, ArrowRight, Timer, UserCircle2 } from 'lucide-react';
+import { ShieldCheck, Activity, BrainCircuit, HeartPulse, Shield, Lock } from 'lucide-react';
 
 interface HeroProps {
   onStart: () => void;
@@ -9,172 +9,158 @@ interface HeroProps {
   onReset: () => void;
 }
 
-const DIFFERENTIATORS = [
-  { icon: <Target className="w-5 h-5 text-[#8C7A6B]" />, text: 'Built for exam stress, not generic wellness' },
-  { icon: <Activity className="w-5 h-5 text-[#8C7A6B]" />, text: 'Detects stress loops, not just mood' },
-  { icon: <ShieldCheck className="w-5 h-5 text-[#8C7A6B]" />, text: 'Gives one safe next action, not long advice' },
-  { icon: <Lock className="w-5 h-5 text-[#8C7A6B]" />, text: 'Stores check-ins locally, not on a server' },
-];
-
 export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-    }
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 15 },
-    show: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 20 } }
+    show: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 20 } },
+  };
+
+  const floatAnimation: any = {
+    y: [0, -10, 0],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-4 py-16 text-center relative overflow-hidden">
-      {/* Background blobs */}
-      <motion.div
-        animate={{ 
-          scale: [1, 1.05, 1],
-          opacity: [0.05, 0.08, 0.05],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #8C7A6B 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
-      <motion.div
-        animate={{ 
-          scale: [1, 1.1, 1],
-          opacity: [0.05, 0.08, 0.05],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #7A9E9F 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
+    <section className="relative overflow-hidden py-16 sm:py-24" aria-labelledby="hero-heading">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-full pointer-events-none z-0">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-[var(--color-teal)]/10 rounded-full blur-[80px]" />
+        <div className="absolute top-40 right-10 w-80 h-80 bg-[var(--color-lavender)]/10 rounded-full blur-[100px]" />
+      </div>
 
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-        className="max-w-2xl mx-auto relative z-10 space-y-8"
-      >
-        {/* Badge */}
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-[#FFFFFF] border border-[#EAE5DF] px-4 py-2 rounded-full text-sm font-medium text-[#78716C] shadow-sm">
-          <span aria-hidden="true">🎓</span>
-          For JEE · NEET · CUET · CAT · GATE · UPSC · Board Exams
-        </motion.div>
-
-        {/* Logo + Name */}
-        <motion.div variants={itemVariants} className="space-y-3">
-          <h1 className="text-5xl sm:text-6xl font-black tracking-tight">
-            <span className="gradient-text drop-shadow-sm">PrepBuddy</span>
-          </h1>
-          <p className="text-xl sm:text-2xl font-semibold text-[#78716C]">
-            Your exam stress reset, in <span className="text-[#8C7A6B]">90 seconds.</span>
-          </p>
-        </motion.div>
-
-        {/* Core line */}
-        <motion.p variants={itemVariants} className="text-base sm:text-lg text-[#78716C] leading-relaxed max-w-xl mx-auto">
-          PrepBuddy does not just ask how you feel. It identifies{' '}
-          <strong className="text-[#1C1917]">what exam-stress loop you are stuck in</strong>{' '}
-          and gives one safe next action.
-        </motion.p>
-
-        {/* Feature pills */}
-        <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-2" aria-label="Key features">
-          {[
-            '📊 Track Mood',
-            '🧩 Identify Triggers',
-            '💭 Reflect Safely',
-            '✨ Personalized Support',
-            '📈 Academic Journey',
-            '🔒 Private & Local',
-          ].map((feature) => (
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              key={feature}
-              className="inline-flex items-center gap-1 bg-[#FFFFFF] border border-[#EAE5DF] text-[#78716C] text-xs font-medium px-3 py-1.5 rounded-full shadow-sm cursor-default"
+      <div className="relative z-10 max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left Side: Copy & CTAs */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="space-y-8"
+        >
+          <div className="space-y-4">
+            <motion.h1
+              id="hero-heading"
+              variants={itemVariants}
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-[var(--color-text)] tracking-tight leading-tight"
             >
-              {feature}
-            </motion.span>
-          ))}
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onStart}
-            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFBF7] transition-all"
-            style={{ background: 'linear-gradient(135deg, #8C7A6B, #7A6A5C)' }}
-            aria-label="Start your 60-second wellness check-in"
-            id="start-checkin-btn"
-          >
-            Start Check-In
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onReset}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-4 bg-[#FFFFFF] text-[#7A9E9F] text-base font-semibold rounded-2xl border border-[#EAE5DF] shadow-sm hover:border-[#7A9E9F]/60 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A9E9F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFBF7]"
-            aria-label="Try the 90-second exam stress reset"
-            id="start-reset-btn"
-          >
-            <Timer className="w-5 h-5" />
-            90-Sec Reset
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onSampleStudent}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-4 bg-transparent text-[#78716C] text-sm font-medium rounded-2xl border border-[#EAE5DF] hover:bg-[#FFFFFF] hover:text-[#1C1917] hover:shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFBF7]"
-            aria-label="Try sample student demo — JEE Mock Test Week"
-            id="try-sample-btn"
-          >
-            <UserCircle2 className="w-5 h-5" />
-            Try Demo
-          </motion.button>
-        </motion.div>
-
-        {/* Privacy note */}
-        <motion.p variants={itemVariants} className="text-xs text-[#A8A29E] pt-2">
-          <ShieldCheck className="inline-block w-4 h-4 mr-1 mb-0.5" />
-          Your check-ins stay on this device. PrepBuddy does not store your journal on a server.
-        </motion.p>
-      </motion.div>
-
-      {/* Why PrepBuddy is different */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="mt-20 w-full max-w-2xl mx-auto relative z-10"
-        aria-labelledby="differentiator-heading"
-      >
-        <h2 id="differentiator-heading" className="text-sm tracking-widest uppercase font-bold text-[#A8A29E] mb-6 text-center">
-          Why PrepBuddy is different
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {DIFFERENTIATORS.map(({ icon, text }, i) => (
-            <motion.div
-              whileHover={{ y: -2, boxShadow: '0 10px 25px -5px rgba(140, 122, 107, 0.1)' }}
-              key={i}
-              className="flex items-center gap-4 bg-[#FFFFFF] border border-[#EAE5DF] shadow-sm rounded-xl px-5 py-4 transition-all"
+              Your exam stress reset, in <span className="gradient-text">90 seconds.</span>
+            </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg sm:text-xl text-[var(--color-muted)] max-w-lg leading-relaxed font-medium"
             >
-              <div className="flex-shrink-0 bg-[#FDFBF7] p-2 rounded-lg border border-[#EAE5DF]" aria-hidden="true">{icon}</div>
-              <p className="text-sm font-medium text-[#78716C] text-left">{text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-    </main>
+              Track mood, detect exam-stress loops, reflect safely, and get one calm next step for JEE, NEET, CUET, Boards and result season.
+            </motion.p>
+          </div>
+
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={onStart}
+              className="btn-primary w-full sm:w-auto px-8 py-4 rounded-xl text-lg font-bold flex justify-center items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-teal)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+              aria-label="Start your 60-second check-in"
+            >
+              Start 60-sec Check-In <span aria-hidden="true">→</span>
+            </button>
+            <button
+              onClick={onSampleStudent}
+              className="btn-secondary w-full sm:w-auto px-8 py-4 rounded-xl text-lg font-bold flex justify-center items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+              aria-label="Load a sample heavy day scenario"
+            >
+              <Activity className="w-5 h-5" />
+              Try Demo Student
+            </button>
+          </motion.div>
+
+          {/* Trust Pills */}
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-4">
+            {[
+              { icon: <Lock className="w-4 h-4 text-emerald-400" />, text: 'No login' },
+              { icon: <ShieldCheck className="w-4 h-4 text-[var(--color-lavender)]" />, text: 'Local-only history' },
+              { icon: <HeartPulse className="w-4 h-4 text-[var(--color-danger)]" />, text: 'Crisis-safe' },
+              { icon: <BrainCircuit className="w-4 h-4 text-[var(--color-teal)]" />, text: 'Works without AI key' },
+              { icon: <Shield className="w-4 h-4 text-[var(--color-amber)]" />, text: 'Built for exam stress' },
+            ].map((pill, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-muted)] bg-[var(--color-card)]/50 border border-[var(--color-card-border)] px-3 py-1.5 rounded-lg shadow-sm"
+              >
+                {pill.icon}
+                {pill.text}
+              </span>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Right Side: 3D Floating Preview Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, x: 20 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, type: 'spring' }}
+          className="relative hidden sm:block"
+        >
+          <motion.div
+            animate={floatAnimation}
+            className="relative z-10 glass-card p-6 rounded-3xl shadow-2xl border border-[var(--color-card-border)] bg-[var(--color-card)]/80 mx-auto max-w-sm"
+          >
+            {/* Header */}
+            <div className="flex justify-between items-center mb-6">
+              <span className="bg-[var(--color-bg)] border border-[var(--color-card-border)] px-3 py-1 rounded-full text-xs font-bold text-[var(--color-lavender)] shadow-sm">
+                Demo Preview
+              </span>
+              <span className="text-xs font-bold text-[var(--color-subtle)] bg-[var(--color-bg)] px-3 py-1 rounded-full shadow-inner">
+                Heavy Day
+              </span>
+            </div>
+
+            {/* Metrics */}
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="bg-[var(--color-bg)] p-3 rounded-2xl border border-[var(--color-card-border)]">
+                <p className="text-[10px] uppercase font-bold text-[var(--color-subtle)] mb-1">Stress</p>
+                <p className="text-xl font-black text-[var(--color-danger)]">9<span className="text-sm font-medium text-[var(--color-subtle)]">/10</span></p>
+              </div>
+              <div className="bg-[var(--color-bg)] p-3 rounded-2xl border border-[var(--color-card-border)]">
+                <p className="text-[10px] uppercase font-bold text-[var(--color-subtle)] mb-1">Sleep</p>
+                <p className="text-xl font-black text-[var(--color-amber)]">4<span className="text-sm font-medium text-[var(--color-subtle)]">/10</span></p>
+              </div>
+              <div className="bg-[var(--color-bg)] p-3 rounded-2xl border border-[var(--color-card-border)]">
+                <p className="text-[10px] uppercase font-bold text-[var(--color-subtle)] mb-1">Confidence</p>
+                <p className="text-xl font-black text-[var(--color-lavender)]">3<span className="text-sm font-medium text-[var(--color-subtle)]">/10</span></p>
+              </div>
+            </div>
+
+            {/* Loop */}
+            <div className="bg-[var(--color-bg)] p-4 rounded-2xl border border-[var(--color-card-border)] mb-4">
+              <p className="text-xs font-bold text-[var(--color-teal)] mb-2 flex items-center gap-2">
+                <Activity className="w-3.5 h-3.5" />
+                Detected Loop
+              </p>
+              <p className="text-sm font-medium text-[var(--color-text)]">Score Rumination</p>
+            </div>
+
+            {/* Action */}
+            <div className="bg-[var(--color-card)] p-4 rounded-2xl border border-[var(--color-card-border)] shadow-md">
+              <p className="text-xs font-bold text-[var(--color-lavender)] mb-2">One Safe Step</p>
+              <p className="text-sm text-[var(--color-muted)] leading-relaxed font-medium">
+                Review 3 mistakes today. Do not restart the entire syllabus.
+              </p>
+            </div>
+            
+            {/* Glow behind card */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-[var(--color-teal)]/20 to-[var(--color-lavender)]/20 blur-xl z-[-1] rounded-[40px] opacity-50" />
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
   );
 }

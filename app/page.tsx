@@ -18,10 +18,10 @@ import CheckInForm from '@/components/CheckInForm';
 import ResultsDashboard from '@/components/ResultsDashboard';
 import LoadingState from '@/components/LoadingState';
 import ErrorState from '@/components/ErrorState';
-import ChallengeAlignment from '@/components/ChallengeAlignment';
 import WhyPrepBuddy from '@/components/WhyPrepBuddy';
 import IsThisNormal from '@/components/IsThisNormal';
 import ResetTool from '@/components/ResetTool';
+import SafeActionCard from '@/components/SafeActionCard';
 
 type AppView = 'hero' | 'checkin' | 'loading' | 'results' | 'error' | 'reset';
 
@@ -51,11 +51,26 @@ export default function HomePage() {
   const handleStart = useCallback(() => {
     setInitialFormValues(undefined);
     setView('checkin');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const handleSampleStudent = useCallback(() => {
-    setInitialFormValues({ ...SAMPLE_STUDENT_INPUT, triggers: [...SAMPLE_STUDENT_INPUT.triggers] });
+    // Inject exact requested demo state
+    setInitialFormValues({ 
+      examType: 'JEE',
+      examPhase: 'Mock Test Week',
+      mood: 'Anxious',
+      stressLevel: 9,
+      anxietyLevel: 8,
+      energyLevel: 4,
+      sleepQuality: 4,
+      focusLevel: 5,
+      confidenceLevel: 3,
+      triggers: ['Mock test score', 'Syllabus backlog'],
+      reflection: "I feel like everyone is ahead of me. My mock score dropped again and I feel like I wasted my parents’ money."
+    });
     setView('checkin');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const handleOpenReset = useCallback(() => {
@@ -66,6 +81,7 @@ export default function HomePage() {
   const handleFormSubmit = useCallback(async (checkIn: StudentCheckInInput) => {
     setLastCheckIn(checkIn);
     setView('loading');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Save profile if first time
     if (typeof window !== 'undefined') {
@@ -150,21 +166,21 @@ export default function HomePage() {
   const mascotEmoji = MASCOT_EMOJI[mascotName] ?? '🌟';
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7]">
+    <div className="min-h-screen bg-transparent text-[var(--color-text)] pb-20 sm:pb-0">
       {/* Skip to main content */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#8C7A6B] focus:text-white focus:rounded-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-indigo)] focus:text-[var(--color-text)] focus:rounded-lg"
       >
         Skip to main content
       </a>
 
       {/* Nav header */}
-      <header className="sticky top-0 z-40 bg-[#FDFBF7]/90 backdrop-blur-md border-b border-[#EAE5DF]">
-        <div className="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-[var(--color-bg)]/80 backdrop-blur-lg border-b border-[var(--color-card-border)]">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <button
             onClick={() => setView('hero')}
-            className="text-xl font-black hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] rounded"
+            className="text-2xl font-black tracking-tight hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] rounded"
             aria-label="PrepBuddy home"
           >
             <span className="gradient-text">PrepBuddy</span>
@@ -173,7 +189,7 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             {/* Mascot badge */}
             <span
-              className="hidden sm:flex items-center gap-1.5 text-xs text-[#D6D1CB] bg-[#FFFFFF] border border-[#EAE5DF] px-2.5 py-1 rounded-full"
+              className="hidden sm:flex items-center gap-1.5 text-xs text-[var(--color-subtle)] bg-[var(--color-card)] border border-[var(--color-card-border)] px-3 py-1.5 rounded-full shadow-sm"
               aria-label={`Your mascot: ${mascotName}`}
             >
               {mascotEmoji} {mascotName}
@@ -183,18 +199,17 @@ export default function HomePage() {
               <>
                 <button
                   onClick={handleOpenReset}
-                  className="px-3 py-2 text-[#7A9E9F] text-sm font-semibold rounded-xl border border-[#7A9E9F]/30 hover:border-[#7A9E9F]/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A9E9F]"
+                  className="hidden sm:inline-flex px-4 py-2 text-[var(--color-lavender)] text-sm font-semibold rounded-xl btn-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)]"
                   aria-label="90-second reset"
                 >
-                  ⏱ Reset
+                  ⏱ Quick Reset
                 </button>
                 <button
                   onClick={handleStart}
-                  className="px-4 py-2 text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FDFBF7]"
-                  style={{ background: 'linear-gradient(135deg, #8C7A6B, #7A6A5C)' }}
+                  className="px-5 py-2 text-sm font-bold rounded-xl btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-teal)]"
                   aria-label="Start check-in"
                 >
-                  Start →
+                  Check-In →
                 </button>
               </>
             )}
@@ -202,7 +217,7 @@ export default function HomePage() {
             {view !== 'hero' && view !== 'checkin' && view !== 'reset' && (
               <button
                 onClick={handleNewCheckIn}
-                className="text-sm font-medium text-[#8C7A6B] hover:text-[#F5E6D3] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] rounded px-2 py-1"
+                className="text-sm font-semibold text-[var(--color-lavender)] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] rounded px-3 py-1.5"
                 aria-label="Start a new check-in"
               >
                 New check-in
@@ -212,10 +227,10 @@ export default function HomePage() {
             {(view === 'checkin' || view === 'reset') && (
               <button
                 onClick={() => setView('hero')}
-                className="text-sm text-[#D6D1CB] hover:text-[#A8A29E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] rounded px-2 py-1"
+                className="text-sm font-medium text-[var(--color-subtle)] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] rounded px-3 py-1.5"
                 aria-label="Return to home"
               >
-                ← Back
+                ← Cancel
               </button>
             )}
           </div>
@@ -227,14 +242,13 @@ export default function HomePage() {
         {view === 'hero' && (
           <>
             <Hero onStart={handleStart} onSampleStudent={handleSampleStudent} onReset={handleOpenReset} />
-            <ChallengeAlignment />
             <WhyPrepBuddy />
             <IsThisNormal />
           </>
         )}
 
         {view === 'reset' && (
-          <div className="max-w-xl mx-auto px-4 py-8">
+          <div className="max-w-2xl mx-auto px-4 py-12">
             <ResetTool onClose={() => setView('hero')} />
           </div>
         )}
@@ -248,13 +262,13 @@ export default function HomePage() {
         )}
 
         {view === 'loading' && (
-          <div className="max-w-xl mx-auto px-4 py-8">
+          <div className="max-w-xl mx-auto px-4 py-12">
             <LoadingState />
           </div>
         )}
 
         {view === 'error' && (
-          <div className="max-w-xl mx-auto px-4 py-8">
+          <div className="max-w-xl mx-auto px-4 py-12">
             <ErrorState message={errorMessage} onRetry={handleRetry} />
           </div>
         )}
@@ -269,28 +283,28 @@ export default function HomePage() {
         )}
       </div>
 
-      {/* Mobile bottom nav — shown on results/journey */}
+      {/* Mobile bottom nav — shown on results/hero */}
       {(view === 'results' || view === 'hero') && (
         <nav
-          className="fixed bottom-0 left-0 right-0 sm:hidden z-40 bg-[#FDFBF7]/95 backdrop-blur-md border-t border-[#EAE5DF] bottom-nav-safe"
+          className="fixed bottom-0 left-0 right-0 sm:hidden z-40 bg-[var(--color-bg)]/90 backdrop-blur-xl border-t border-[var(--color-card-border)] bottom-nav-safe"
           aria-label="Mobile navigation"
         >
-          <div className="flex items-center justify-around px-2 py-2">
+          <div className="flex items-center justify-around px-2 py-3">
             {[
-            { icon: '📋', label: 'Check-In', action: handleStart, active: false },
+              { icon: '📝', label: 'Check-In', action: handleStart, active: false },
               { icon: '⏱', label: 'Reset', action: handleOpenReset, active: false },
               { icon: '📈', label: 'Journey', action: view === 'results' ? () => {} : handleStart, active: view === 'results' },
             ].map(({ icon, label, action, active }) => (
               <button
                 key={label}
                 onClick={action}
-                className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B]"
-                style={active ? { color: '#8C7A6B' } : { color: '#D6D1CB' }}
+                className="flex flex-col items-center gap-1.5 px-4 py-1 rounded-xl transition-colors focus:outline-none"
+                style={active ? { color: 'var(--color-lavender)' } : { color: 'var(--color-subtle)' }}
                 aria-label={label}
                 aria-current={active ? 'page' : undefined}
               >
-                <span className="text-xl" aria-hidden="true">{icon}</span>
-                <span className="text-xs font-medium">{label}</span>
+                <span className="text-2xl drop-shadow-md" aria-hidden="true">{icon}</span>
+                <span className="text-[10px] font-bold tracking-wide uppercase">{label}</span>
               </button>
             ))}
           </div>
@@ -298,13 +312,13 @@ export default function HomePage() {
       )}
 
       {/* Footer */}
-      <footer className="text-center py-8 text-xs text-[#D6D1CB] border-t border-[#EAE5DF] mt-8 mb-16 sm:mb-0">
-        <p>
+      <footer className="text-center py-10 text-xs font-medium text-[var(--color-subtle)] border-t border-[var(--color-card-border)] mt-12 bg-[var(--color-bg)]">
+        <p className="max-w-xl mx-auto px-6 leading-relaxed">
           PrepBuddy is not a diagnosis tool or therapy replacement.
           It offers everyday exam wellness support and encourages reaching out to trusted people when needed.
         </p>
-        <p className="mt-1">
-          Your check-ins stay on this device only. · Built for Hack2Skill PromptWars 2025
+        <p className="mt-3 opacity-70">
+          Your check-ins stay on this device only. Private by design.
         </p>
       </footer>
     </div>

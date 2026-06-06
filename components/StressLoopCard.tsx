@@ -1,105 +1,77 @@
 'use client';
 
 import type { DetectedStressLoop } from '@/lib/types';
+import { Activity, ArrowRight, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface StressLoopCardProps {
   loop: DetectedStressLoop;
 }
 
-const LOOP_COLORS: Record<string, { color: string; bg: string; border: string }> = {
-  'score-rumination': {
-    color: '#C97A7E',
-    bg: 'rgba(248, 113, 113, 0.08)',
-    border: 'rgba(248, 113, 113, 0.2)',
-  },
-  'backlog-paralysis': {
-    color: '#D4A373',
-    bg: 'rgba(245, 158, 11, 0.08)',
-    border: 'rgba(245, 158, 11, 0.2)',
-  },
-  'insomnia-fatigue': {
-    color: '#8C7A6B',
-    bg: 'rgba(129, 140, 248, 0.08)',
-    border: 'rgba(129, 140, 248, 0.2)',
-  },
-  'result-limbo': {
-    color: '#A78BFA',
-    bg: 'rgba(167, 139, 250, 0.08)',
-    border: 'rgba(167, 139, 250, 0.2)',
-  },
-  'expectation-pressure': {
-    color: '#F4A261',
-    bg: 'rgba(244, 162, 97, 0.08)',
-    border: 'rgba(244, 162, 97, 0.2)',
-  },
-  'exam-freeze': {
-    color: '#7A9E9F',
-    bg: 'rgba(45, 212, 191, 0.08)',
-    border: 'rgba(45, 212, 191, 0.2)',
-  },
-};
-
 export default function StressLoopCard({ loop }: StressLoopCardProps) {
-  const colors = LOOP_COLORS[loop.id] ?? {
-    color: '#8C7A6B',
-    bg: 'rgba(129, 140, 248, 0.08)',
-    border: 'rgba(129, 140, 248, 0.2)',
-  };
-
   // Parse chain into individual steps
   const chainSteps = loop.chain.split('→').map((s) => s.trim()).filter(Boolean);
 
   return (
     <section
       aria-labelledby="stress-loop-heading"
-      className="rounded-2xl p-5 border animate-fade-in"
-      style={{ background: colors.bg, borderColor: colors.border }}
+      className="rounded-3xl p-6 border border-[var(--color-card-border)] bg-[var(--color-card)] relative overflow-hidden shadow-2xl"
     >
+      {/* Glow behind */}
+      <div className="absolute -top-10 -right-10 w-40 h-40 bg-[var(--color-danger)]/10 rounded-full blur-3xl pointer-events-none" />
+      
       {/* Header */}
-      <div className="flex items-center gap-2 mb-4">
-        <div
-          className="w-2 h-2 rounded-full flex-shrink-0"
-          style={{ background: colors.color }}
-          aria-hidden="true"
-        />
-        <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: colors.color }}>
-          Detected Exam Stress Loop
-        </p>
+      <div className="flex items-center gap-2 mb-6">
+        <div className="bg-[var(--color-danger)]/20 p-2 rounded-xl">
+          <Activity className="w-5 h-5 text-[var(--color-danger)]" />
+        </div>
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-widest text-[var(--color-danger)] mb-0.5">
+            Detected Exam Stress Loop
+          </p>
+          <h3 id="stress-loop-heading" className="text-xl font-black text-[var(--color-text)]">
+            {loop.name}
+          </h3>
+        </div>
       </div>
 
-      <h3 id="stress-loop-heading" className="text-base font-bold text-[#1C1917] mb-3">
-        {loop.name}
-      </h3>
-
       {/* Chain visualization */}
-      <div
-        className="flex flex-wrap items-center gap-2 mb-4"
-        aria-label={`Stress chain: ${loop.chain}`}
-      >
+      <div className="relative mb-8 mt-2 pl-4 border-l-2 border-[var(--color-card-border)] space-y-4" aria-label={`Stress chain: ${loop.chain}`}>
+        {/* Animated glowing line running down the border */}
+        <motion.div 
+          className="absolute top-0 -left-[2px] w-[2px] bg-gradient-to-b from-[var(--color-danger)] via-[var(--color-amber)] to-transparent"
+          initial={{ height: '0%' }}
+          animate={{ height: '100%' }}
+          transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatType: "reverse" }}
+        />
+
         {chainSteps.map((step, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span
-              className="text-xs font-medium px-2 py-1 rounded-lg"
-              style={{ background: `${colors.color}18`, color: colors.color }}
-            >
+          <motion.div 
+            key={i} 
+            className="relative"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.15 }}
+          >
+            {/* Node dot */}
+            <div className={`absolute -left-[21px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full ${i === 0 ? 'bg-[var(--color-danger)] shadow-[0_0_8px_var(--color-danger)]' : 'bg-[var(--color-card-border)]'}`} />
+            
+            <div className="bg-[var(--color-bg)] border border-[var(--color-card-border)] px-4 py-2.5 rounded-xl shadow-sm text-sm font-semibold text-[var(--color-text)] flex items-center justify-between">
               {step}
-            </span>
-            {i < chainSteps.length - 1 && (
-              <span className="text-[#D6D1CB] text-xs font-bold" aria-hidden="true">
-                →
-              </span>
-            )}
-          </div>
+              {i < chainSteps.length - 1 && (
+                <ArrowRight className="w-4 h-4 text-[var(--color-subtle)] opacity-50" />
+              )}
+            </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* Action */}
-      <div className="flex items-start gap-2 rounded-xl p-3 bg-[#FDFBF7]/40">
-        <span className="text-lg" aria-hidden="true">⚡</span>
-        <div>
-          <p className="text-xs font-semibold text-[#CBD5E1] mb-0.5">One safe next action</p>
-          <p className="text-sm text-[#1C1917]">{loop.action}</p>
-        </div>
+      {/* Why detected */}
+      <div className="flex items-start gap-2 pt-4 border-t border-[var(--color-card-border)]/50">
+        <Zap className="w-4 h-4 text-[var(--color-amber)] mt-0.5 flex-shrink-0" />
+        <p className="text-xs text-[var(--color-subtle)] font-medium leading-relaxed">
+          <span className="text-[var(--color-muted)] font-bold">Why detected:</span> High stress combined with low confidence triggers this specific avoidance pattern. Breaking this cycle requires a very small, non-threatening step.
+        </p>
       </div>
     </section>
   );

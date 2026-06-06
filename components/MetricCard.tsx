@@ -13,7 +13,7 @@ export default function MetricCard({
   label,
   value,
   max,
-  color = '#818CF8',
+  color = '#8C7A6B',
   icon,
   description,
 }: MetricCardProps) {
@@ -24,11 +24,11 @@ export default function MetricCard({
       : null;
 
   return (
-    <div className="bg-[#111827] rounded-2xl p-4 border border-[#1E293B] card-hover">
+    <div className="bg-[#FFFFFF] rounded-2xl p-4 border border-[#EAE5DF] card-hover">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           {icon && <span aria-hidden="true" className="text-xl">{icon}</span>}
-          <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">
+          <span className="text-xs font-semibold text-[#A8A29E] uppercase tracking-wide">
             {label}
           </span>
         </div>
@@ -43,7 +43,7 @@ export default function MetricCard({
 
       {pct !== null && max && (
         <div
-          className="h-1.5 rounded-full bg-[#1E293B] overflow-hidden"
+          className="h-1.5 rounded-full bg-[#EAE5DF] overflow-hidden"
           role="progressbar"
           aria-valuenow={numericValue ?? 0}
           aria-valuemin={1}
@@ -58,7 +58,7 @@ export default function MetricCard({
       )}
 
       {description && (
-        <p className="mt-2 text-xs text-[#64748B]">{description}</p>
+        <p className="mt-2 text-xs text-[#A8A29E]">{description}</p>
       )}
     </div>
   );

@@ -13,21 +13,21 @@ export default function StudyRecoveryPlan({
 }: StudyRecoveryPlanProps) {
   return (
     <section aria-labelledby="study-heading" className="space-y-3">
-      <h2 id="study-heading" className="text-base font-bold text-[#F8FAFC]">
+      <h2 id="study-heading" className="text-base font-bold text-[#1C1917]">
         Study + Recovery Plan
       </h2>
 
       {/* Phase protocol */}
       <div className="rounded-2xl p-4 border" style={{ background: 'rgba(129, 140, 248, 0.08)', borderColor: 'rgba(129, 140, 248, 0.2)' }}>
-        <p className="text-xs font-semibold text-[#818CF8] uppercase tracking-wide mb-1">
+        <p className="text-xs font-semibold text-[#8C7A6B] uppercase tracking-wide mb-1">
           Exam Phase Advice
         </p>
         <p className="text-sm text-[#CBD5E1] leading-relaxed">{examPhaseProtocol}</p>
       </div>
 
       {/* Intensity */}
-      <div className="bg-[#111827] rounded-2xl p-4 border border-[#1E293B]">
-        <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wide mb-2">
+      <div className="bg-[#FFFFFF] rounded-2xl p-4 border border-[#EAE5DF]">
+        <p className="text-xs font-semibold text-[#A8A29E] uppercase tracking-wide mb-2">
           Today&apos;s Intensity
         </p>
         <p className="text-sm text-[#CBD5E1] leading-relaxed">
@@ -36,15 +36,15 @@ export default function StudyRecoveryPlan({
       </div>
 
       {/* Session blocks */}
-      <div className="bg-[#111827] rounded-2xl p-4 border border-[#1E293B]">
-        <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wide mb-3">
+      <div className="bg-[#FFFFFF] rounded-2xl p-4 border border-[#EAE5DF]">
+        <p className="text-xs font-semibold text-[#A8A29E] uppercase tracking-wide mb-3">
           Suggested Study Blocks
         </p>
         <ul className="space-y-2" aria-label="Study session blocks">
           {plan.sessionBlocks.map((block, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-[#CBD5E1]">
               <span
-                className="w-5 h-5 rounded-full bg-[#818CF8]/15 text-[#818CF8] text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5"
+                className="w-5 h-5 rounded-full bg-[#8C7A6B]/15 text-[#8C7A6B] text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5"
                 aria-hidden="true"
               >
                 {i + 1}
@@ -58,7 +58,7 @@ export default function StudyRecoveryPlan({
       {/* Avoid list */}
       {plan.avoidList.length > 0 && (
         <div className="rounded-2xl p-4 border" style={{ background: 'rgba(245, 158, 11, 0.06)', borderColor: 'rgba(245, 158, 11, 0.2)' }}>
-          <p className="text-xs font-semibold text-[#F59E0B] uppercase tracking-wide mb-2">
+          <p className="text-xs font-semibold text-[#D4A373] uppercase tracking-wide mb-2">
             Avoid Today
           </p>
           <ul className="space-y-1" aria-label="Things to avoid today">
@@ -74,7 +74,7 @@ export default function StudyRecoveryPlan({
 
       {/* Recovery action */}
       <div className="rounded-2xl p-4 border" style={{ background: 'rgba(52, 211, 153, 0.06)', borderColor: 'rgba(52, 211, 153, 0.2)' }}>
-        <p className="text-xs font-semibold text-[#34D399] uppercase tracking-wide mb-1">
+        <p className="text-xs font-semibold text-[#729C7C] uppercase tracking-wide mb-1">
           Evening Recovery
         </p>
         <p className="text-sm text-[#CBD5E1] leading-relaxed">{plan.recoveryAction}</p>

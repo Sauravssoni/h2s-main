@@ -30,9 +30,9 @@ const reasons = [
 
 export default function WhyPrepBuddy() {
   return (
-    <section className="py-16 bg-[#111827] border-y border-[#1E293B]">
+    <section className="py-16 bg-[#FFFFFF] border-y border-[#EAE5DF]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-black text-[#F8FAFC] text-center mb-10">
+        <h2 className="text-2xl sm:text-3xl font-black text-[#1C1917] text-center mb-10">
           Built for exam stress, not generic wellness.
         </h2>
         
@@ -40,16 +40,16 @@ export default function WhyPrepBuddy() {
           {reasons.map((reason, idx) => (
             <div 
               key={idx} 
-              className="bg-[#1E293B] border border-[#334155] rounded-2xl p-6 flex flex-col items-start gap-4 hover:border-[#818CF8] transition-colors"
+              className="bg-[#EAE5DF] border border-[#D6D1CB] rounded-2xl p-6 flex flex-col items-start gap-4 hover:border-[#8C7A6B] transition-colors"
             >
-              <div className="w-12 h-12 bg-[#0F172A] rounded-xl flex items-center justify-center text-2xl border border-[#334155]">
+              <div className="w-12 h-12 bg-[#FDFBF7] rounded-xl flex items-center justify-center text-2xl border border-[#D6D1CB]">
                 {reason.icon}
               </div>
               <div>
-                <h3 className="text-[#F8FAFC] font-bold text-lg mb-2">
+                <h3 className="text-[#1C1917] font-bold text-lg mb-2">
                   {reason.title}
                 </h3>
-                <p className="text-[#94A3B8] text-sm leading-relaxed">
+                <p className="text-[#78716C] text-sm leading-relaxed">
                   {reason.description}
                 </p>
               </div>

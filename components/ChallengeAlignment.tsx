@@ -5,7 +5,7 @@ const CHALLENGE_CARDS = [
     icon: '📊',
     title: 'Track Mood',
     description: 'Stress, anxiety, energy, sleep, focus, and confidence — all in 60 seconds.',
-    color: '#2DD4BF',
+    color: '#7A9E9F',
     bg: 'rgba(45, 212, 191, 0.08)',
     border: 'rgba(45, 212, 191, 0.2)',
   },
@@ -14,7 +14,7 @@ const CHALLENGE_CARDS = [
     title: 'Identify Stress Triggers',
     description:
       'Mock scores, syllabus backlog, comparison, parental pressure, result uncertainty — and 9 more.',
-    color: '#818CF8',
+    color: '#8C7A6B',
     bg: 'rgba(129, 140, 248, 0.08)',
     border: 'rgba(129, 140, 248, 0.2)',
   },
@@ -31,7 +31,7 @@ const CHALLENGE_CARDS = [
     title: 'Get Personalized Support',
     description:
       'A reset plan, study recovery suggestions, and safety resources — tailored to your exam and phase.',
-    color: '#34D399',
+    color: '#729C7C',
     bg: 'rgba(52, 211, 153, 0.08)',
     border: 'rgba(52, 211, 153, 0.2)',
   },
@@ -44,16 +44,16 @@ export default function ChallengeAlignment() {
       className="w-full max-w-4xl mx-auto px-4 py-12"
     >
       <div className="text-center mb-8">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#818CF8] mb-2">
+        <p className="text-xs font-semibold uppercase tracking-widest text-[#8C7A6B] mb-2">
           Hack2Skill Challenge Alignment
         </p>
         <h2
           id="challenge-heading"
-          className="text-2xl sm:text-3xl font-bold text-[#F8FAFC]"
+          className="text-2xl sm:text-3xl font-bold text-[#1C1917]"
         >
           How PrepBuddy solves the challenge
         </h2>
-        <p className="text-[#94A3B8] mt-2 text-sm max-w-lg mx-auto">
+        <p className="text-[#78716C] mt-2 text-sm max-w-lg mx-auto">
           The challenge asks for mood tracking, stress trigger identification, emotion reflection,
           and personalized wellness support. PrepBuddy delivers all four — exam-specifically.
         </p>
@@ -75,8 +75,8 @@ export default function ChallengeAlignment() {
                 {icon}
               </div>
               <div>
-                <h3 className="text-base font-bold text-[#F8FAFC]">{title}</h3>
-                <p className="text-sm text-[#94A3B8] mt-1">{description}</p>
+                <h3 className="text-base font-bold text-[#1C1917]">{title}</h3>
+                <p className="text-sm text-[#78716C] mt-1">{description}</p>
               </div>
             </div>
           </div>

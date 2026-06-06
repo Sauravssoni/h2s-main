@@ -8,11 +8,11 @@ const STATUS_CONFIG: Record<
   WellnessSnapshotType['status'],
   { color: string; bg: string; border: string; icon: string }
 > = {
-  Balanced: { color: '#34D399', bg: 'rgba(52, 211, 153, 0.08)', border: 'rgba(52, 211, 153, 0.25)', icon: '✅' },
-  Watchful: { color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.08)', border: 'rgba(245, 158, 11, 0.25)', icon: '👁️' },
+  Balanced: { color: '#729C7C', bg: 'rgba(52, 211, 153, 0.08)', border: 'rgba(52, 211, 153, 0.25)', icon: '✅' },
+  Watchful: { color: '#D4A373', bg: 'rgba(245, 158, 11, 0.08)', border: 'rgba(245, 158, 11, 0.25)', icon: '👁️' },
   'Heavy day': { color: '#F4A261', bg: 'rgba(244, 162, 97, 0.08)', border: 'rgba(244, 162, 97, 0.25)', icon: '⚡' },
-  'Recovery needed': { color: '#F87171', bg: 'rgba(248, 113, 113, 0.08)', border: 'rgba(248, 113, 113, 0.25)', icon: '🔴' },
-  'Support recommended': { color: '#F87171', bg: 'rgba(248, 113, 113, 0.08)', border: 'rgba(248, 113, 113, 0.25)', icon: '🆘' },
+  'Recovery needed': { color: '#C97A7E', bg: 'rgba(248, 113, 113, 0.08)', border: 'rgba(248, 113, 113, 0.25)', icon: '🔴' },
+  'Support recommended': { color: '#C97A7E', bg: 'rgba(248, 113, 113, 0.08)', border: 'rgba(248, 113, 113, 0.25)', icon: '🆘' },
 };
 
 interface WellnessSnapshotProps {
@@ -24,7 +24,7 @@ export default function WellnessSnapshot({ snapshot }: WellnessSnapshotProps) {
 
   return (
     <section aria-labelledby="snapshot-heading" className="space-y-4">
-      <h2 id="snapshot-heading" className="text-base font-bold text-[#F8FAFC]">
+      <h2 id="snapshot-heading" className="text-base font-bold text-[#1C1917]">
         Wellness Snapshot
       </h2>
 
@@ -55,33 +55,33 @@ export default function WellnessSnapshot({ snapshot }: WellnessSnapshotProps) {
           label="Stress"
           value={snapshot.stressLevel}
           max={10}
-          color={snapshot.stressLevel >= 7 ? '#F87171' : '#F59E0B'}
+          color={snapshot.stressLevel >= 7 ? '#C97A7E' : '#D4A373'}
           icon="🔥"
         />
         <MetricCard
           label="Energy"
           value={snapshot.energyLevel}
           max={10}
-          color={snapshot.energyLevel >= 6 ? '#34D399' : '#F59E0B'}
+          color={snapshot.energyLevel >= 6 ? '#729C7C' : '#D4A373'}
           icon="⚡"
         />
         <MetricCard
           label="Sleep"
           value={snapshot.sleepQuality}
           max={10}
-          color={snapshot.sleepQuality >= 6 ? '#34D399' : '#F87171'}
+          color={snapshot.sleepQuality >= 6 ? '#729C7C' : '#C97A7E'}
           icon="😴"
         />
         <MetricCard
           label="Confidence"
           value={snapshot.confidenceLevel}
           max={10}
-          color={snapshot.confidenceLevel >= 6 ? '#34D399' : '#F59E0B'}
+          color={snapshot.confidenceLevel >= 6 ? '#729C7C' : '#D4A373'}
           icon="💪"
         />
       </div>
 
-      <p className="text-xs text-[#334155] italic">
+      <p className="text-xs text-[#D6D1CB] italic">
         PrepBuddy is not a medical diagnosis tool. This snapshot reflects your self-reported check-in only.
       </p>
     </section>

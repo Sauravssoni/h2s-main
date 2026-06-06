@@ -19,12 +19,12 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
       {/* Background blobs */}
       <div
         className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-[0.07] blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #818CF8 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #8C7A6B 0%, transparent 70%)' }}
         aria-hidden="true"
       />
       <div
         className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-[0.07] blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #2DD4BF 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #7A9E9F 0%, transparent 70%)' }}
         aria-hidden="true"
       />
       <div
@@ -35,7 +35,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
 
       <div className="max-w-2xl mx-auto relative z-10 space-y-8">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-[#111827] border border-[#1E293B] px-4 py-2 rounded-full text-sm font-medium text-[#C7D2FE]">
+        <div className="inline-flex items-center gap-2 bg-[#FFFFFF] border border-[#EAE5DF] px-4 py-2 rounded-full text-sm font-medium text-[#F5E6D3]">
           <span aria-hidden="true">🎓</span>
           For JEE · NEET · CUET · CAT · GATE · UPSC · Board Exams
         </div>
@@ -51,9 +51,9 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
         </div>
 
         {/* Core line */}
-        <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-[#A8A29E] leading-relaxed max-w-xl mx-auto">
           PrepBuddy does not just ask how you feel. It identifies{' '}
-          <strong className="text-[#C7D2FE]">what exam-stress loop you are stuck in</strong>{' '}
+          <strong className="text-[#F5E6D3]">what exam-stress loop you are stuck in</strong>{' '}
           and gives one safe next action.
         </p>
 
@@ -69,7 +69,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
           ].map((feature) => (
             <span
               key={feature}
-              className="inline-flex items-center gap-1 bg-[#111827] border border-[#1E293B] text-[#94A3B8] text-xs font-medium px-3 py-1.5 rounded-full"
+              className="inline-flex items-center gap-1 bg-[#FFFFFF] border border-[#EAE5DF] text-[#78716C] text-xs font-medium px-3 py-1.5 rounded-full"
             >
               {feature}
             </span>
@@ -80,8 +80,8 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={onStart}
-            className="w-full sm:w-auto px-10 py-4 text-white text-lg font-bold rounded-2xl hover:opacity-90 active:scale-95 transition-all shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F172A]"
-            style={{ background: 'linear-gradient(135deg, #818CF8, #6366F1)' }}
+            className="w-full sm:w-auto px-10 py-4 text-white text-lg font-bold rounded-2xl hover:opacity-90 active:scale-95 transition-all shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFBF7]"
+            style={{ background: 'linear-gradient(135deg, #8C7A6B, #7A6A5C)' }}
             aria-label="Start your 60-second wellness check-in"
             id="start-checkin-btn"
           >
@@ -89,7 +89,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
           </button>
           <button
             onClick={onReset}
-            className="w-full sm:w-auto px-6 py-4 bg-[#111827] text-[#2DD4BF] text-base font-semibold rounded-2xl border border-[#2DD4BF]/30 hover:border-[#2DD4BF]/60 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F172A]"
+            className="w-full sm:w-auto px-6 py-4 bg-[#FFFFFF] text-[#7A9E9F] text-base font-semibold rounded-2xl border border-[#7A9E9F]/30 hover:border-[#7A9E9F]/60 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A9E9F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFBF7]"
             aria-label="Try the 90-second exam stress reset"
             id="start-reset-btn"
           >
@@ -97,7 +97,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
           </button>
           <button
             onClick={onSampleStudent}
-            className="w-full sm:w-auto px-6 py-4 bg-transparent text-[#64748B] text-sm font-medium rounded-2xl border border-[#1E293B] hover:text-[#94A3B8] hover:border-[#334155] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F172A]"
+            className="w-full sm:w-auto px-6 py-4 bg-transparent text-[#A8A29E] text-sm font-medium rounded-2xl border border-[#EAE5DF] hover:text-[#78716C] hover:border-[#D6D1CB] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFBF7]"
             aria-label="Try sample student demo — JEE Mock Test Week"
             id="try-sample-btn"
           >
@@ -106,7 +106,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
         </div>
 
         {/* Privacy note */}
-        <p className="text-xs text-[#334155]">
+        <p className="text-xs text-[#D6D1CB]">
           Your check-ins stay on this device. PrepBuddy does not store your journal on a server.
         </p>
       </div>
@@ -118,7 +118,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
       >
         <h2
           id="differentiator-heading"
-          className="text-lg font-bold text-[#94A3B8] mb-4 text-center"
+          className="text-lg font-bold text-[#78716C] mb-4 text-center"
         >
           Why PrepBuddy is different
         </h2>
@@ -126,7 +126,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
           {DIFFERENTIATORS.map(({ icon, text }) => (
             <div
               key={text}
-              className="flex items-center gap-3 bg-[#111827] border border-[#1E293B] rounded-xl px-4 py-3"
+              className="flex items-center gap-3 bg-[#FFFFFF] border border-[#EAE5DF] rounded-xl px-4 py-3"
             >
               <span className="text-xl flex-shrink-0" aria-hidden="true">{icon}</span>
               <p className="text-sm text-[#CBD5E1]">{text}</p>
@@ -140,7 +140,7 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
         className="mt-12 w-full max-w-3xl mx-auto relative z-10"
         aria-labelledby="how-it-works"
       >
-        <h2 id="how-it-works" className="text-lg font-bold text-[#94A3B8] mb-4 text-center">
+        <h2 id="how-it-works" className="text-lg font-bold text-[#78716C] mb-4 text-center">
           How it works
         </h2>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-0">
@@ -152,16 +152,16 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
             { icon: '📈', label: 'Journey', desc: '7-day trend tracking' },
           ].map(({ icon, label, desc }, i, arr) => (
             <div key={label} className="flex sm:flex-col items-center sm:items-center flex-1">
-              <div className="flex flex-row sm:flex-col items-center gap-2 bg-[#111827] border border-[#1E293B] rounded-2xl p-3 sm:p-4 text-center sm:w-full">
+              <div className="flex flex-row sm:flex-col items-center gap-2 bg-[#FFFFFF] border border-[#EAE5DF] rounded-2xl p-3 sm:p-4 text-center sm:w-full">
                 <div className="text-2xl" aria-hidden="true">{icon}</div>
                 <div>
-                  <p className="text-xs font-bold text-[#F8FAFC]">{label}</p>
-                  <p className="text-xs text-[#64748B] mt-0.5 hidden sm:block">{desc}</p>
+                  <p className="text-xs font-bold text-[#1C1917]">{label}</p>
+                  <p className="text-xs text-[#A8A29E] mt-0.5 hidden sm:block">{desc}</p>
                 </div>
               </div>
               {i < arr.length - 1 && (
                 <div
-                  className="text-[#334155] mx-1 sm:mx-0 sm:my-1 flex-shrink-0 font-bold text-sm rotate-0 sm:rotate-90"
+                  className="text-[#D6D1CB] mx-1 sm:mx-0 sm:my-1 flex-shrink-0 font-bold text-sm rotate-0 sm:rotate-90"
                   aria-hidden="true"
                 >
                   →

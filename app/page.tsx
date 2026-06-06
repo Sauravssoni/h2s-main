@@ -150,21 +150,21 @@ export default function HomePage() {
   const mascotEmoji = MASCOT_EMOJI[mascotName] ?? '🌟';
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#FDFBF7]">
       {/* Skip to main content */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#818CF8] focus:text-white focus:rounded-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#8C7A6B] focus:text-white focus:rounded-lg"
       >
         Skip to main content
       </a>
 
       {/* Nav header */}
-      <header className="sticky top-0 z-40 bg-[#0F172A]/90 backdrop-blur-md border-b border-[#1E293B]">
+      <header className="sticky top-0 z-40 bg-[#FDFBF7]/90 backdrop-blur-md border-b border-[#EAE5DF]">
         <div className="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
           <button
             onClick={() => setView('hero')}
-            className="text-xl font-black hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] rounded"
+            className="text-xl font-black hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] rounded"
             aria-label="PrepBuddy home"
           >
             <span className="gradient-text">PrepBuddy</span>
@@ -173,7 +173,7 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             {/* Mascot badge */}
             <span
-              className="hidden sm:flex items-center gap-1.5 text-xs text-[#475569] bg-[#111827] border border-[#1E293B] px-2.5 py-1 rounded-full"
+              className="hidden sm:flex items-center gap-1.5 text-xs text-[#D6D1CB] bg-[#FFFFFF] border border-[#EAE5DF] px-2.5 py-1 rounded-full"
               aria-label={`Your mascot: ${mascotName}`}
             >
               {mascotEmoji} {mascotName}
@@ -183,15 +183,15 @@ export default function HomePage() {
               <>
                 <button
                   onClick={handleOpenReset}
-                  className="px-3 py-2 text-[#2DD4BF] text-sm font-semibold rounded-xl border border-[#2DD4BF]/30 hover:border-[#2DD4BF]/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF]"
+                  className="px-3 py-2 text-[#7A9E9F] text-sm font-semibold rounded-xl border border-[#7A9E9F]/30 hover:border-[#7A9E9F]/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A9E9F]"
                   aria-label="90-second reset"
                 >
                   ⏱ Reset
                 </button>
                 <button
                   onClick={handleStart}
-                  className="px-4 py-2 text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#0F172A]"
-                  style={{ background: 'linear-gradient(135deg, #818CF8, #6366F1)' }}
+                  className="px-4 py-2 text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FDFBF7]"
+                  style={{ background: 'linear-gradient(135deg, #8C7A6B, #7A6A5C)' }}
                   aria-label="Start check-in"
                 >
                   Start →
@@ -202,7 +202,7 @@ export default function HomePage() {
             {view !== 'hero' && view !== 'checkin' && view !== 'reset' && (
               <button
                 onClick={handleNewCheckIn}
-                className="text-sm font-medium text-[#818CF8] hover:text-[#C7D2FE] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] rounded px-2 py-1"
+                className="text-sm font-medium text-[#8C7A6B] hover:text-[#F5E6D3] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] rounded px-2 py-1"
                 aria-label="Start a new check-in"
               >
                 New check-in
@@ -212,7 +212,7 @@ export default function HomePage() {
             {(view === 'checkin' || view === 'reset') && (
               <button
                 onClick={() => setView('hero')}
-                className="text-sm text-[#475569] hover:text-[#64748B] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] rounded px-2 py-1"
+                className="text-sm text-[#D6D1CB] hover:text-[#A8A29E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] rounded px-2 py-1"
                 aria-label="Return to home"
               >
                 ← Back
@@ -272,7 +272,7 @@ export default function HomePage() {
       {/* Mobile bottom nav — shown on results/journey */}
       {(view === 'results' || view === 'hero') && (
         <nav
-          className="fixed bottom-0 left-0 right-0 sm:hidden z-40 bg-[#0F172A]/95 backdrop-blur-md border-t border-[#1E293B] bottom-nav-safe"
+          className="fixed bottom-0 left-0 right-0 sm:hidden z-40 bg-[#FDFBF7]/95 backdrop-blur-md border-t border-[#EAE5DF] bottom-nav-safe"
           aria-label="Mobile navigation"
         >
           <div className="flex items-center justify-around px-2 py-2">
@@ -284,8 +284,8 @@ export default function HomePage() {
               <button
                 key={label}
                 onClick={action}
-                className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8]"
-                style={active ? { color: '#818CF8' } : { color: '#475569' }}
+                className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B]"
+                style={active ? { color: '#8C7A6B' } : { color: '#D6D1CB' }}
                 aria-label={label}
                 aria-current={active ? 'page' : undefined}
               >
@@ -298,7 +298,7 @@ export default function HomePage() {
       )}
 
       {/* Footer */}
-      <footer className="text-center py-8 text-xs text-[#334155] border-t border-[#1E293B] mt-8 mb-16 sm:mb-0">
+      <footer className="text-center py-8 text-xs text-[#D6D1CB] border-t border-[#EAE5DF] mt-8 mb-16 sm:mb-0">
         <p>
           PrepBuddy is not a diagnosis tool or therapy replacement.
           It offers everyday exam wellness support and encourages reaching out to trusted people when needed.

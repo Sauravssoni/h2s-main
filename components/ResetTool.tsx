@@ -81,22 +81,22 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
 
   return (
     <div
-      className="rounded-2xl border border-[#1E293B] bg-[#111827] overflow-hidden animate-fade-in"
+      className="rounded-2xl border border-[#EAE5DF] bg-[#FFFFFF] overflow-hidden animate-fade-in"
       role="region"
       aria-label="90-Second Reset Tool"
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4 border-b border-[#1E293B]">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-[#EAE5DF]">
         <div>
-          <h2 className="text-base font-bold text-[#F8FAFC]">90-Second Reset</h2>
-          <p className="text-xs text-[#94A3B8] mt-0.5">
+          <h2 className="text-base font-bold text-[#1C1917]">90-Second Reset</h2>
+          <p className="text-xs text-[#78716C] mt-0.5">
             Your books will wait. Your brain will thank you.
           </p>
         </div>
         {onClose && (
           <button
             onClick={onClose}
-            className="text-[#64748B] hover:text-[#F8FAFC] transition-colors p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8]"
+            className="text-[#A8A29E] hover:text-[#1C1917] transition-colors p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B]"
             aria-label="Close reset tool"
           >
             ✕
@@ -114,11 +114,11 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
                 key={f}
                 onClick={() => setFeeling(f)}
                 aria-pressed={feeling === f}
-                className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8]"
+                className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B]"
                 style={
                   feeling === f
-                    ? { background: 'rgba(129, 140, 248, 0.2)', borderColor: '#818CF8', color: '#C7D2FE' }
-                    : { background: '#0F172A', borderColor: '#1E293B', color: '#94A3B8' }
+                    ? { background: 'rgba(129, 140, 248, 0.2)', borderColor: '#8C7A6B', color: '#F5E6D3' }
+                    : { background: '#FDFBF7', borderColor: '#EAE5DF', color: '#78716C' }
                 }
               >
                 <span aria-hidden="true">{FEELING_EMOJI[f]}</span>
@@ -133,7 +133,7 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
               setCycleCount(0);
               setPhase('breathe');
             }}
-            className="w-full py-3 bg-[#818CF8] text-white font-semibold rounded-xl hover:bg-[#6366F1] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827]"
+            className="w-full py-3 bg-[#8C7A6B] text-white font-semibold rounded-xl hover:bg-[#7A6A5C] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF]"
             aria-label={`Start 90-second reset for feeling ${feeling}`}
           >
             Start Reset →
@@ -144,7 +144,7 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
       {/* Phase: Breathing */}
       {phase === 'breathe' && currentBreathePhase && (
         <div className="p-5 flex flex-col items-center gap-6">
-          <p className="text-sm text-[#94A3B8] text-center">
+          <p className="text-sm text-[#78716C] text-center">
             Cycle {cycleCount + 1}/3 — Follow the circle
           </p>
 
@@ -167,7 +167,7 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
             />
             {/* Main circle */}
             <div
-              className="rounded-full flex flex-col items-center justify-center border-2 border-[#818CF8] transition-all duration-[3500ms] ease-in-out"
+              className="rounded-full flex flex-col items-center justify-center border-2 border-[#8C7A6B] transition-all duration-[3500ms] ease-in-out"
               style={{
                 width: `${currentBreathePhase.scale * 128}px`,
                 height: `${currentBreathePhase.scale * 128}px`,
@@ -175,20 +175,20 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
               }}
               aria-hidden="true"
             >
-              <span className="text-3xl font-black text-[#818CF8]">{countdown}</span>
-              <span className="text-xs text-[#C7D2FE] font-medium mt-1">{currentBreathePhase.label}</span>
+              <span className="text-3xl font-black text-[#8C7A6B]">{countdown}</span>
+              <span className="text-xs text-[#F5E6D3] font-medium mt-1">{currentBreathePhase.label}</span>
             </div>
           </div>
 
           {/* Steps */}
-          <div className="flex gap-2 text-xs text-[#475569]" aria-hidden="true">
+          <div className="flex gap-2 text-xs text-[#D6D1CB]" aria-hidden="true">
             {BREATHE_PHASES.map((p, i) => (
               <span
                 key={i}
                 className="px-2 py-1 rounded-full transition-colors"
                 style={
                   i === breathePhaseIdx
-                    ? { background: 'rgba(129,140,248,0.15)', color: '#C7D2FE' }
+                    ? { background: 'rgba(129,140,248,0.15)', color: '#F5E6D3' }
                     : {}
                 }
               >
@@ -199,7 +199,7 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
 
           <button
             onClick={() => setPhase('choose')}
-            className="text-xs text-[#64748B] hover:text-[#94A3B8] transition-colors"
+            className="text-xs text-[#A8A29E] hover:text-[#78716C] transition-colors"
             aria-label="Cancel breathing exercise"
           >
             Skip
@@ -210,15 +210,15 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
       {/* Phase: Reframe */}
       {phase === 'reframe' && (
         <div className="p-5 space-y-4 animate-fade-in">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#818CF8]">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#8C7A6B]">
             One reframe
           </p>
-          <blockquote className="text-base text-[#F8FAFC] leading-relaxed border-l-2 border-[#818CF8] pl-4 italic">
+          <blockquote className="text-base text-[#1C1917] leading-relaxed border-l-2 border-[#8C7A6B] pl-4 italic">
             &quot;{chosenReframe}&quot;
           </blockquote>
           <button
             onClick={() => setPhase('action')}
-            className="w-full py-3 bg-[#818CF8] text-white font-semibold rounded-xl hover:bg-[#6366F1] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827]"
+            className="w-full py-3 bg-[#8C7A6B] text-white font-semibold rounded-xl hover:bg-[#7A6A5C] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF]"
           >
             One next action →
           </button>
@@ -228,7 +228,7 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
       {/* Phase: Action */}
       {phase === 'action' && (
         <div className="p-5 space-y-4 animate-fade-in">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#34D399]">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#729C7C]">
             One safe next action
           </p>
           <div className="space-y-2" role="list" aria-label="Suggested next actions">
@@ -236,10 +236,10 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
               <div
                 key={i}
                 role="listitem"
-                className="flex items-start gap-3 p-3 rounded-xl border border-[#1E293B] bg-[#0F172A]/60"
+                className="flex items-start gap-3 p-3 rounded-xl border border-[#EAE5DF] bg-[#FDFBF7]/60"
               >
                 <span
-                  className="w-5 h-5 rounded-full bg-[#818CF8]/20 text-[#818CF8] text-xs flex items-center justify-center flex-shrink-0 font-bold mt-0.5"
+                  className="w-5 h-5 rounded-full bg-[#8C7A6B]/20 text-[#8C7A6B] text-xs flex items-center justify-center flex-shrink-0 font-bold mt-0.5"
                   aria-hidden="true"
                 >
                   {i + 1}
@@ -250,7 +250,7 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
           </div>
           <button
             onClick={() => { setPhase('choose'); setCycleCount(0); }}
-            className="w-full py-2.5 rounded-xl text-sm text-[#64748B] border border-[#1E293B] hover:text-[#94A3B8] hover:border-[#334155] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8]"
+            className="w-full py-2.5 rounded-xl text-sm text-[#A8A29E] border border-[#EAE5DF] hover:text-[#78716C] hover:border-[#D6D1CB] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B]"
           >
             Start again
           </button>

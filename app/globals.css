@@ -3,20 +3,20 @@
 /* ─── PrepBuddy Design Tokens ─── */
 :root {
   /* Dark calm theme */
-  --color-bg: #0F172A;
-  --color-card: #111827;
-  --color-card-border: #1E293B;
+  --color-bg: #FDFBF7;
+  --color-card: #FFFFFF;
+  --color-card-border: #EAE5DF;
   --color-card-hover: #1A2742;
-  --color-text: #F8FAFC;
-  --color-muted: #94A3B8;
+  --color-text: #1C1917;
+  --color-muted: #78716C;
   --color-subtle: #CBD5E1;
-  --color-lavender: #C7D2FE;
-  --color-indigo: #818CF8;
-  --color-teal: #2DD4BF;
-  --color-amber: #F59E0B;
+  --color-lavender: #F5E6D3;
+  --color-indigo: #8C7A6B;
+  --color-teal: #7A9E9F;
+  --color-amber: #D4A373;
   --color-amber-soft: #F4A261;
-  --color-danger: #F87171;
-  --color-success: #34D399;
+  --color-danger: #C97A7E;
+  --color-success: #729C7C;
   --color-purple: #A78BFA;
 }
 
@@ -54,7 +54,7 @@ input[type='range'] {
   border: none;
   height: 6px;
   border-radius: 999px;
-  background: #1E293B;
+  background: #EAE5DF;
   cursor: pointer;
 }
 
@@ -64,9 +64,9 @@ input[type='range']::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #818CF8;
-  border: 2px solid #0F172A;
-  box-shadow: 0 0 0 2px #818CF855;
+  background: #8C7A6B;
+  border: 2px solid #FDFBF7;
+  box-shadow: 0 0 0 2px #8C7A6B55;
   cursor: pointer;
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
@@ -75,32 +75,32 @@ input[type='range']::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #818CF8;
-  border: 2px solid #0F172A;
-  box-shadow: 0 0 0 2px #818CF855;
+  background: #8C7A6B;
+  border: 2px solid #FDFBF7;
+  box-shadow: 0 0 0 2px #8C7A6B55;
   cursor: pointer;
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 input[type='range']:hover::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px #818CF866;
+  box-shadow: 0 0 0 4px #8C7A6B66;
   transform: scale(1.1);
 }
 
 input[type='range']:hover::-moz-range-thumb {
-  box-shadow: 0 0 0 4px #818CF866;
+  box-shadow: 0 0 0 4px #8C7A6B66;
   transform: scale(1.1);
 }
 
 input[type='range']:focus-visible {
-  outline: 2px solid #818CF8;
+  outline: 2px solid #8C7A6B;
   outline-offset: 4px;
   border-radius: 999px;
 }
 
 /* ─── Focus ring (global) ─── */
 :focus-visible {
-  outline: 2px solid #818CF8;
+  outline: 2px solid #8C7A6B;
   outline-offset: 2px;
 }
 
@@ -113,11 +113,11 @@ input[type='range']:focus-visible {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #EAE5DF;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #D6D1CB;
 }
 
 /* ─── Breathing animation ─── */
@@ -128,8 +128,8 @@ input[type='range']:focus-visible {
 }
 
 @keyframes breathe-glow {
-  0%, 100% { box-shadow: 0 0 20px #818CF844; }
-  50%       { box-shadow: 0 0 48px #818CF888, 0 0 80px #2DD4BF33; }
+  0%, 100% { box-shadow: 0 0 20px #8C7A6B44; }
+  50%       { box-shadow: 0 0 48px #8C7A6B88, 0 0 80px #7A9E9F33; }
 }
 
 .animate-breathe {
@@ -148,7 +148,7 @@ input[type='range']:focus-visible {
 
 /* ─── Pulse ring (crisis card) ─── */
 @keyframes pulse-ring {
-  0%   { box-shadow: 0 0 0 0 #F8717155; }
+  0%   { box-shadow: 0 0 0 0 #C97A7E55; }
   70%  { box-shadow: 0 0 0 10px transparent; }
   100% { box-shadow: 0 0 0 0 transparent; }
 }
@@ -162,22 +162,22 @@ input[type='range']:focus-visible {
   transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 .card-hover:hover {
-  box-shadow: 0 4px 24px rgba(129, 140, 248, 0.12);
+  box-shadow: 0 4px 24px rgba(140, 122, 107, 0.15);
   transform: translateY(-2px);
-  border-color: #334155;
+  border-color: #D6D1CB;
 }
 
 /* ─── Glass card ─── */
 .glass-card {
-  background: rgba(17, 24, 39, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* ─── Gradient text ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #818CF8, #2DD4BF);
+  background: linear-gradient(135deg, #8C7A6B, #7A9E9F);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -92,11 +92,11 @@ export const MOOD_EMOJI: Record<MoodLabel, string> = {
 };
 
 export const MOOD_COLOR: Record<MoodLabel, string> = {
-  Calm: '#34D399',
-  Okay: '#2DD4BF',
+  Calm: '#729C7C',
+  Okay: '#7A9E9F',
   Stressed: '#F4A261',
   Anxious: '#F4A261',
-  Low: '#F87171',
+  Low: '#C97A7E',
   Overwhelmed: '#EF4444',
 };
 

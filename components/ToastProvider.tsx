@@ -35,7 +35,7 @@ export default function ToastProvider({ children }: { children: React.ReactNode 
             className={`pointer-events-auto flex items-center justify-between gap-4 p-4 rounded-xl shadow-lg border backdrop-blur-md text-sm font-medium animate-in slide-in-from-bottom-5 fade-in-0
               ${toast.type === 'success' ? 'bg-[#064E3B]/90 border-[#059669] text-[#A7F3D0]' : ''}
               ${toast.type === 'error' ? 'bg-[#7F1D1D]/90 border-[#DC2626] text-[#FECACA]' : ''}
-              ${toast.type === 'info' ? 'bg-[#1E293B]/90 border-[#334155] text-[#F8FAFC]' : ''}
+              ${toast.type === 'info' ? 'bg-[#EAE5DF]/90 border-[#D6D1CB] text-[#1C1917]' : ''}
             `}
             role="status"
           >

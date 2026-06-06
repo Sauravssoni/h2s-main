@@ -31,12 +31,12 @@ export default function SliderField({
   const pct = ((value - min) / (max - min)) * 100;
   const color =
     pct >= 80
-      ? '#F87171'
+      ? '#C97A7E'
       : pct >= 60
-      ? '#F59E0B'
+      ? '#D4A373'
       : pct >= 40
-      ? '#2DD4BF'
-      : '#34D399';
+      ? '#7A9E9F'
+      : '#729C7C';
 
   return (
     <div className="space-y-2">
@@ -54,7 +54,7 @@ export default function SliderField({
       </div>
 
       {description && (
-        <p id={descId} className="text-xs text-[#64748B]">
+        <p id={descId} className="text-xs text-[#A8A29E]">
           {description}
         </p>
       )}
@@ -71,13 +71,13 @@ export default function SliderField({
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={value}
-        className="w-full h-1.5 rounded-full appearance-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827]"
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF]"
         style={{
-          background: `linear-gradient(to right, ${color} ${pct}%, #1E293B ${pct}%)`,
+          background: `linear-gradient(to right, ${color} ${pct}%, #EAE5DF ${pct}%)`,
         }}
       />
 
-      <div className="flex justify-between text-xs text-[#475569]">
+      <div className="flex justify-between text-xs text-[#D6D1CB]">
         <span>{lowLabel}</span>
         <span>{highLabel}</span>
       </div>

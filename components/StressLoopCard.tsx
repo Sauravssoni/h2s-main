@@ -8,17 +8,17 @@ interface StressLoopCardProps {
 
 const LOOP_COLORS: Record<string, { color: string; bg: string; border: string }> = {
   'score-rumination': {
-    color: '#F87171',
+    color: '#C97A7E',
     bg: 'rgba(248, 113, 113, 0.08)',
     border: 'rgba(248, 113, 113, 0.2)',
   },
   'backlog-paralysis': {
-    color: '#F59E0B',
+    color: '#D4A373',
     bg: 'rgba(245, 158, 11, 0.08)',
     border: 'rgba(245, 158, 11, 0.2)',
   },
   'insomnia-fatigue': {
-    color: '#818CF8',
+    color: '#8C7A6B',
     bg: 'rgba(129, 140, 248, 0.08)',
     border: 'rgba(129, 140, 248, 0.2)',
   },
@@ -33,7 +33,7 @@ const LOOP_COLORS: Record<string, { color: string; bg: string; border: string }>
     border: 'rgba(244, 162, 97, 0.2)',
   },
   'exam-freeze': {
-    color: '#2DD4BF',
+    color: '#7A9E9F',
     bg: 'rgba(45, 212, 191, 0.08)',
     border: 'rgba(45, 212, 191, 0.2)',
   },
@@ -41,7 +41,7 @@ const LOOP_COLORS: Record<string, { color: string; bg: string; border: string }>
 
 export default function StressLoopCard({ loop }: StressLoopCardProps) {
   const colors = LOOP_COLORS[loop.id] ?? {
-    color: '#818CF8',
+    color: '#8C7A6B',
     bg: 'rgba(129, 140, 248, 0.08)',
     border: 'rgba(129, 140, 248, 0.2)',
   };
@@ -67,7 +67,7 @@ export default function StressLoopCard({ loop }: StressLoopCardProps) {
         </p>
       </div>
 
-      <h3 id="stress-loop-heading" className="text-base font-bold text-[#F8FAFC] mb-3">
+      <h3 id="stress-loop-heading" className="text-base font-bold text-[#1C1917] mb-3">
         {loop.name}
       </h3>
 
@@ -85,7 +85,7 @@ export default function StressLoopCard({ loop }: StressLoopCardProps) {
               {step}
             </span>
             {i < chainSteps.length - 1 && (
-              <span className="text-[#475569] text-xs font-bold" aria-hidden="true">
+              <span className="text-[#D6D1CB] text-xs font-bold" aria-hidden="true">
                 →
               </span>
             )}
@@ -94,11 +94,11 @@ export default function StressLoopCard({ loop }: StressLoopCardProps) {
       </div>
 
       {/* Action */}
-      <div className="flex items-start gap-2 rounded-xl p-3 bg-[#0F172A]/40">
+      <div className="flex items-start gap-2 rounded-xl p-3 bg-[#FDFBF7]/40">
         <span className="text-lg" aria-hidden="true">⚡</span>
         <div>
           <p className="text-xs font-semibold text-[#CBD5E1] mb-0.5">One safe next action</p>
-          <p className="text-sm text-[#F8FAFC]">{loop.action}</p>
+          <p className="text-sm text-[#1C1917]">{loop.action}</p>
         </div>
       </div>
     </section>

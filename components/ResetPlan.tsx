@@ -6,9 +6,9 @@ const CATEGORY_STYLES: Record<
   ResetStep['category'],
   { bg: string; color: string; border: string; icon: string; label: string }
 > = {
-  breathe: { bg: 'rgba(45, 212, 191, 0.1)', color: '#2DD4BF', border: 'rgba(45, 212, 191, 0.2)', icon: '🌬️', label: 'Breathe' },
-  study: { bg: 'rgba(129, 140, 248, 0.1)', color: '#818CF8', border: 'rgba(129, 140, 248, 0.2)', icon: '📖', label: 'Study' },
-  recover: { bg: 'rgba(245, 158, 11, 0.1)', color: '#F59E0B', border: 'rgba(245, 158, 11, 0.2)', icon: '🌿', label: 'Recover' },
+  breathe: { bg: 'rgba(45, 212, 191, 0.1)', color: '#7A9E9F', border: 'rgba(45, 212, 191, 0.2)', icon: '🌬️', label: 'Breathe' },
+  study: { bg: 'rgba(129, 140, 248, 0.1)', color: '#8C7A6B', border: 'rgba(129, 140, 248, 0.2)', icon: '📖', label: 'Study' },
+  recover: { bg: 'rgba(245, 158, 11, 0.1)', color: '#D4A373', border: 'rgba(245, 158, 11, 0.2)', icon: '🌿', label: 'Recover' },
   connect: { bg: 'rgba(167, 139, 250, 0.1)', color: '#A78BFA', border: 'rgba(167, 139, 250, 0.2)', icon: '🤝', label: 'Connect' },
 };
 
@@ -19,10 +19,10 @@ interface ResetPlanProps {
 export default function ResetPlan({ steps }: ResetPlanProps) {
   return (
     <section aria-labelledby="reset-heading" className="space-y-4">
-      <h2 id="reset-heading" className="text-base font-bold text-[#F8FAFC]">
+      <h2 id="reset-heading" className="text-base font-bold text-[#1C1917]">
         3-Step Reset Plan
       </h2>
-      <p className="text-sm text-[#64748B]">
+      <p className="text-sm text-[#A8A29E]">
         These three actions will help you reset and move forward today.
       </p>
 
@@ -32,7 +32,7 @@ export default function ResetPlan({ steps }: ResetPlanProps) {
           return (
             <li
               key={step.step}
-              className="bg-[#111827] rounded-2xl p-4 border flex items-start gap-4 card-hover"
+              className="bg-[#FFFFFF] rounded-2xl p-4 border flex items-start gap-4 card-hover"
               style={{ borderColor: style.border }}
             >
               {/* Step number */}
@@ -53,7 +53,7 @@ export default function ResetPlan({ steps }: ResetPlanProps) {
                     <span aria-hidden="true">{style.icon}</span>
                     {style.label}
                   </span>
-                  <span className="text-xs text-[#475569]">{step.duration}</span>
+                  <span className="text-xs text-[#D6D1CB]">{step.duration}</span>
                 </div>
                 <p className="text-sm text-[#CBD5E1] leading-relaxed">{step.action}</p>
               </div>

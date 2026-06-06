@@ -44,7 +44,7 @@ export default function ChipGroup<T extends string>({
     <fieldset>
       <legend className="text-sm font-semibold text-[#CBD5E1] mb-1">{label}</legend>
       {description && (
-        <p id={descId} className="text-xs text-[#64748B] mb-3">
+        <p id={descId} className="text-xs text-[#A8A29E] mb-3">
           {description}
         </p>
       )}
@@ -62,11 +62,11 @@ export default function ChipGroup<T extends string>({
               className={`
                 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium
                 border-2 transition-all duration-200 cursor-pointer
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827]
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF]
                 ${
                   isSelected
-                    ? 'bg-[#818CF8]/20 border-[#818CF8] text-[#C7D2FE]'
-                    : 'bg-[#0F172A] border-[#1E293B] text-[#94A3B8] hover:border-[#818CF8]/50 hover:text-[#CBD5E1]'
+                    ? 'bg-[#8C7A6B]/20 border-[#8C7A6B] text-[#F5E6D3]'
+                    : 'bg-[#FDFBF7] border-[#EAE5DF] text-[#78716C] hover:border-[#8C7A6B]/50 hover:text-[#CBD5E1]'
                 }
               `}
             >

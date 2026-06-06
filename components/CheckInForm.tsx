@@ -109,14 +109,14 @@ export default function CheckInForm({
     <div className="max-w-xl mx-auto px-4 py-8">
       <Stepper currentStep={step} totalSteps={4} labels={STEP_LABELS} />
 
-      <div className="bg-[#111827] rounded-3xl border border-[#1E293B] p-6 space-y-6">
+      <div className="bg-[#FFFFFF] rounded-3xl border border-[#EAE5DF] p-6 space-y-6">
         {/* ── Step 1: Exam Context ── */}
         {step === 1 && (
           <fieldset className="space-y-6">
-            <legend className="text-xl font-bold text-[#F8FAFC]">
+            <legend className="text-xl font-bold text-[#1C1917]">
               Step 1 — Exam Context
             </legend>
-            <p className="text-sm text-[#64748B]">
+            <p className="text-sm text-[#A8A29E]">
               Tell us about your exam and today&apos;s study plan.
             </p>
 
@@ -133,10 +133,10 @@ export default function CheckInForm({
                     role="radio"
                     aria-checked={examType === type}
                     onClick={() => setExamType(type)}
-                    className={`px-4 py-2 rounded-xl text-sm font-medium border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827] ${
+                    className={`px-4 py-2 rounded-xl text-sm font-medium border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF] ${
                       examType === type
-                        ? 'bg-[#818CF8]/20 border-[#818CF8] text-[#C7D2FE]'
-                        : 'bg-[#0F172A] border-[#1E293B] text-[#94A3B8] hover:border-[#818CF8]/50'
+                        ? 'bg-[#8C7A6B]/20 border-[#8C7A6B] text-[#F5E6D3]'
+                        : 'bg-[#FDFBF7] border-[#EAE5DF] text-[#78716C] hover:border-[#8C7A6B]/50'
                     }`}
                   >
                     {type}
@@ -158,10 +158,10 @@ export default function CheckInForm({
                     role="radio"
                     aria-checked={examPhase === phase}
                     onClick={() => setExamPhase(phase)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-sm border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827] ${
+                    className={`w-full text-left px-4 py-3 rounded-xl text-sm border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF] ${
                       examPhase === phase
-                        ? 'bg-[#818CF8]/15 border-[#818CF8] text-[#C7D2FE] font-semibold'
-                        : 'bg-[#0F172A] border-[#1E293B] text-[#94A3B8] hover:border-[#818CF8]/50'
+                        ? 'bg-[#8C7A6B]/15 border-[#8C7A6B] text-[#F5E6D3] font-semibold'
+                        : 'bg-[#FDFBF7] border-[#EAE5DF] text-[#78716C] hover:border-[#8C7A6B]/50'
                     }`}
                   >
                     {phase}
@@ -185,10 +185,10 @@ export default function CheckInForm({
                   onChange={(e) =>
                     setStudyHours(e.target.value === '' ? '' : Math.max(0, Math.min(16, Number(e.target.value))))
                   }
-                  className="w-24 px-3 py-2 border-2 border-[#1E293B] rounded-xl text-center text-lg font-bold text-[#F8FAFC] bg-[#0F172A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:border-[#818CF8]"
+                  className="w-24 px-3 py-2 border-2 border-[#EAE5DF] rounded-xl text-center text-lg font-bold text-[#1C1917] bg-[#FDFBF7] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:border-[#8C7A6B]"
                   aria-label="Study hours planned"
                 />
-                <span className="text-sm text-[#64748B]">hours (0–16)</span>
+                <span className="text-sm text-[#A8A29E]">hours (0–16)</span>
               </div>
             </div>
           </fieldset>
@@ -197,10 +197,10 @@ export default function CheckInForm({
         {/* ── Step 2: Mind & Body ── */}
         {step === 2 && (
           <fieldset className="space-y-6">
-            <legend className="text-xl font-bold text-[#F8FAFC]">
+            <legend className="text-xl font-bold text-[#1C1917]">
               Step 2 — Mind &amp; Body Check
             </legend>
-            <p className="text-sm text-[#64748B]">
+            <p className="text-sm text-[#A8A29E]">
               Rate how you are feeling right now. Be honest — this helps the plan become more accurate.
             </p>
 
@@ -217,10 +217,10 @@ export default function CheckInForm({
                     role="radio"
                     aria-checked={mood === m}
                     onClick={() => setMood(m)}
-                    className={`flex flex-col items-center p-3 rounded-2xl border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827] ${
+                    className={`flex flex-col items-center p-3 rounded-2xl border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF] ${
                       mood === m
-                        ? 'bg-[#818CF8]/15 border-[#818CF8]'
-                        : 'bg-[#0F172A] border-[#1E293B] hover:border-[#818CF8]/50'
+                        ? 'bg-[#8C7A6B]/15 border-[#8C7A6B]'
+                        : 'bg-[#FDFBF7] border-[#EAE5DF] hover:border-[#8C7A6B]/50'
                     }`}
                   >
                     <span className="text-2xl" aria-hidden="true">{MOOD_EMOJI[m]}</span>
@@ -288,8 +288,8 @@ export default function CheckInForm({
         {step === 3 && (
           <div className="space-y-5">
             <div>
-              <h2 className="text-xl font-bold text-[#F8FAFC]">Step 3 — Stress Triggers</h2>
-              <p className="text-sm text-[#64748B] mt-1">
+              <h2 className="text-xl font-bold text-[#1C1917]">Step 3 — Stress Triggers</h2>
+              <p className="text-sm text-[#A8A29E] mt-1">
                 Select any triggers that feel relevant today. You can select multiple.
               </p>
             </div>
@@ -304,7 +304,7 @@ export default function CheckInForm({
             />
 
             {triggers.length > 0 && (
-              <p className="text-xs text-[#34D399] font-medium">
+              <p className="text-xs text-[#729C7C] font-medium">
                 ✅ {triggers.length} trigger{triggers.length !== 1 ? 's' : ''} selected
               </p>
             )}
@@ -315,15 +315,15 @@ export default function CheckInForm({
         {step === 4 && (
           <div className="space-y-5">
             <div>
-              <h2 className="text-xl font-bold text-[#F8FAFC]">Step 4 — Reflection</h2>
-              <p className="text-sm text-[#64748B] mt-1">
+              <h2 className="text-xl font-bold text-[#1C1917]">Step 4 — Reflection</h2>
+              <p className="text-sm text-[#A8A29E] mt-1">
                 Take a moment to write what is on your mind. This is private — it stays on your device.
               </p>
             </div>
 
             {/* Guided prompts */}
             <div className="space-y-2">
-              <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wide">
+              <p className="text-xs font-semibold text-[#A8A29E] uppercase tracking-wide">
                 Pick a prompt or write your own:
               </p>
               <div className="flex flex-wrap gap-2">
@@ -332,10 +332,10 @@ export default function CheckInForm({
                     key={idx}
                     type="button"
                     onClick={() => handlePromptSelect(prompt, idx)}
-                    className={`text-xs px-3 py-1.5 rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827] ${
+                    className={`text-xs px-3 py-1.5 rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF] ${
                       reflectionPromptIdx === idx
-                        ? 'bg-[#818CF8]/20 border-[#818CF8] text-[#C7D2FE]'
-                        : 'bg-[#0F172A] border-[#1E293B] text-[#94A3B8] hover:border-[#818CF8]/50'
+                        ? 'bg-[#8C7A6B]/20 border-[#8C7A6B] text-[#F5E6D3]'
+                        : 'bg-[#FDFBF7] border-[#EAE5DF] text-[#78716C] hover:border-[#8C7A6B]/50'
                     }`}
                   >
                     {prompt}
@@ -347,7 +347,7 @@ export default function CheckInForm({
             <div className="space-y-1">
               <label htmlFor={reflectionId} className="block text-sm font-semibold text-[#CBD5E1]">
                 Your reflection{' '}
-                <span className="font-normal text-[#64748B]">(optional)</span>
+                <span className="font-normal text-[#A8A29E]">(optional)</span>
               </label>
               <textarea
                 id={reflectionId}
@@ -359,10 +359,10 @@ export default function CheckInForm({
                 placeholder="Write what is on your mind today…"
                 rows={5}
                 maxLength={1000}
-                className="w-full px-4 py-3 border-2 border-[#1E293B] rounded-2xl text-sm text-[#F8FAFC] placeholder-[#475569] resize-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:border-[#818CF8] transition-colors bg-[#0F172A]"
+                className="w-full px-4 py-3 border-2 border-[#EAE5DF] rounded-2xl text-sm text-[#1C1917] placeholder-[#D6D1CB] resize-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:border-[#8C7A6B] transition-colors bg-[#FDFBF7]"
                 aria-describedby={`${reflectionId}-help`}
               />
-              <div id={`${reflectionId}-help`} className="flex justify-between text-xs text-[#64748B]">
+              <div id={`${reflectionId}-help`} className="flex justify-between text-xs text-[#A8A29E]">
                 <span>Your reflection is stored only on this device.</span>
                 <span>{reflection.length}/1000</span>
               </div>
@@ -371,12 +371,12 @@ export default function CheckInForm({
         )}
 
         {/* Navigation */}
-        <div className="flex items-center justify-between pt-4 border-t border-[#1E293B]">
+        <div className="flex items-center justify-between pt-4 border-t border-[#EAE5DF]">
           {step > 1 ? (
             <button
               type="button"
               onClick={handleBack}
-              className="px-5 py-2.5 text-sm font-medium text-[#64748B] border-2 border-[#1E293B] rounded-xl hover:border-[#818CF8]/50 hover:text-[#818CF8] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827]"
+              className="px-5 py-2.5 text-sm font-medium text-[#A8A29E] border-2 border-[#EAE5DF] rounded-xl hover:border-[#8C7A6B]/50 hover:text-[#8C7A6B] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF]"
               aria-label="Go to previous step"
             >
               ← Back
@@ -389,8 +389,8 @@ export default function CheckInForm({
             <button
               type="button"
               onClick={handleNext}
-              className="px-6 py-2.5 text-white rounded-xl font-semibold hover:opacity-90 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818CF8] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827] shadow-md shadow-[#818CF8]/20"
-              style={{ background: 'linear-gradient(135deg, #818CF8, #6366F1)' }}
+              className="px-6 py-2.5 text-white rounded-xl font-semibold hover:opacity-90 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8C7A6B] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF] shadow-md shadow-[#8C7A6B]/20"
+              style={{ background: 'linear-gradient(135deg, #8C7A6B, #7A6A5C)' }}
               aria-label={`Go to step ${step + 1}: ${STEP_LABELS[step]}`}
             >
               Next →
@@ -400,8 +400,8 @@ export default function CheckInForm({
               type="button"
               onClick={handleSubmit}
               disabled={isLoading}
-              className="px-6 py-2.5 text-white rounded-xl font-semibold hover:opacity-90 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF] focus-visible:ring-offset-1 focus-visible:ring-offset-[#111827] shadow-md shadow-[#2DD4BF]/20 disabled:opacity-60 disabled:cursor-not-allowed"
-              style={{ background: 'linear-gradient(135deg, #2DD4BF, #34D399)' }}
+              className="px-6 py-2.5 text-white rounded-xl font-semibold hover:opacity-90 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A9E9F] focus-visible:ring-offset-1 focus-visible:ring-offset-[#FFFFFF] shadow-md shadow-[#7A9E9F]/20 disabled:opacity-60 disabled:cursor-not-allowed"
+              style={{ background: 'linear-gradient(135deg, #7A9E9F, #729C7C)' }}
               aria-label="Generate your wellness plan"
               aria-busy={isLoading}
             >

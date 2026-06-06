@@ -12,7 +12,7 @@ export default function Stepper({ currentStep, totalSteps, labels }: StepperProp
       <ol className="flex items-center justify-between relative">
         {/* Connecting line */}
         <div
-          className="absolute top-4 left-0 h-0.5 bg-[#1E293B] z-0"
+          className="absolute top-4 left-0 h-0.5 bg-[#EAE5DF] z-0"
           style={{ width: '100%' }}
           aria-hidden="true"
         />
@@ -20,7 +20,7 @@ export default function Stepper({ currentStep, totalSteps, labels }: StepperProp
           className="absolute top-4 left-0 h-0.5 z-0 transition-all duration-500"
           style={{
             width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%`,
-            background: 'linear-gradient(to right, #818CF8, #2DD4BF)',
+            background: 'linear-gradient(to right, #8C7A6B, #7A9E9F)',
           }}
           aria-hidden="true"
         />
@@ -39,10 +39,10 @@ export default function Stepper({ currentStep, totalSteps, labels }: StepperProp
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold border-2 transition-all duration-300 ${
                   isComplete
-                    ? 'bg-[#818CF8] border-[#818CF8] text-white'
+                    ? 'bg-[#8C7A6B] border-[#8C7A6B] text-white'
                     : isActive
-                    ? 'bg-[#0F172A] border-[#818CF8] text-[#818CF8]'
-                    : 'bg-[#0F172A] border-[#1E293B] text-[#475569]'
+                    ? 'bg-[#FDFBF7] border-[#8C7A6B] text-[#8C7A6B]'
+                    : 'bg-[#FDFBF7] border-[#EAE5DF] text-[#D6D1CB]'
                 }`}
               >
                 {isComplete ? (
@@ -59,7 +59,7 @@ export default function Stepper({ currentStep, totalSteps, labels }: StepperProp
               </div>
               <span
                 className={`text-xs font-medium hidden sm:block ${
-                  isActive ? 'text-[#C7D2FE]' : 'text-[#475569]'
+                  isActive ? 'text-[#F5E6D3]' : 'text-[#D6D1CB]'
                 }`}
               >
                 {label}

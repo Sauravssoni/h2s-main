@@ -24,7 +24,7 @@ function isValidEntry(obj: unknown): obj is JourneyEntry {
 export function loadJourneyEntries(): JourneyEntry[] {
   if (typeof window === 'undefined') return [];
   try {
-    // Migrate from legacy PrepPulse key if present
+    // Migrate from legacy PrepBuddy key if present
     const legacy = localStorage.getItem(LEGACY_JOURNEY_KEY);
     const current = localStorage.getItem(STORAGE_KEYS.JOURNEY);
     const raw = current ?? legacy ?? null;

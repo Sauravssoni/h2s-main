@@ -10,21 +10,21 @@ export default function LoadingState() {
     >
       {/* Animated pulse rings */}
       <div className="relative flex items-center justify-center w-24 h-24" aria-hidden="true">
-        <div className="absolute w-24 h-24 rounded-full border-2 border-[#818CF8]/20 animate-ping" />
-        <div className="absolute w-16 h-16 rounded-full border-2 border-[#818CF8]/30 animate-ping [animation-delay:0.3s]" />
+        <div className="absolute w-24 h-24 rounded-full border-2 border-[#8C7A6B]/20 animate-ping" />
+        <div className="absolute w-16 h-16 rounded-full border-2 border-[#8C7A6B]/30 animate-ping [animation-delay:0.3s]" />
         <div
           className="w-12 h-12 rounded-full flex items-center justify-center"
-          style={{ background: 'linear-gradient(135deg, #818CF8, #2DD4BF)' }}
+          style={{ background: 'linear-gradient(135deg, #8C7A6B, #7A9E9F)' }}
         >
           <span className="text-white text-xl" aria-hidden="true">💫</span>
         </div>
       </div>
 
       <div className="text-center space-y-2">
-        <p className="text-lg font-semibold text-[#F8FAFC]">
+        <p className="text-lg font-semibold text-[#1C1917]">
           PrepBuddy is building your wellness plan…
         </p>
-        <p className="text-sm text-[#64748B]">
+        <p className="text-sm text-[#A8A29E]">
           Analysing your check-in and preparing personalised support
         </p>
       </div>
@@ -34,7 +34,7 @@ export default function LoadingState() {
         {['w-3/4', 'w-full', 'w-5/6', 'w-2/3'].map((w, i) => (
           <div
             key={i}
-            className={`h-3 ${w} rounded-full bg-[#1E293B] animate-pulse mx-auto`}
+            className={`h-3 ${w} rounded-full bg-[#EAE5DF] animate-pulse mx-auto`}
             style={{ animationDelay: `${i * 0.15}s` }}
           />
         ))}

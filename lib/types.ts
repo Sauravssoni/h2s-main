@@ -103,6 +103,24 @@ export interface DetectedPainPoint {
   action: string;
 }
 
+// ─── Exam Timeline ───
+
+export interface ExamTimeline {
+  examDate?: string;
+  daysLeft: number | null;
+  timelinePhase: string;
+  paceMode: string;
+  advice: string;
+}
+
+// ─── Buddy Notes ───
+
+export interface BuddyNote {
+  id: string;
+  text: string;
+  reason: string;
+}
+
 // ─── Check-In Input ───
 
 export interface StudentCheckInInput {
@@ -118,6 +136,7 @@ export interface StudentCheckInInput {
   confidenceLevel: number;
   triggers: StressTrigger[];
   reflection: string;
+  examDate?: string;
 }
 
 // ─── Wellness Plan ───
@@ -201,6 +220,8 @@ export interface WellnessPlan {
   detectedStressLoop: DetectedStressLoop | null;
   detectedPainPoints: DetectedPainPoint[];
   evidenceItems: EvidenceItem[];
+  examTimeline?: ExamTimeline;
+  buddyNotes?: BuddyNote[];
   generatedAt: string;
 }
 

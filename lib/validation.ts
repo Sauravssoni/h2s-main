@@ -59,6 +59,11 @@ export const studentCheckInSchema = z.object({
     .max(MAX_REFLECTION_LENGTH, `Reflection must be under ${MAX_REFLECTION_LENGTH} characters`)
     .optional()
     .default(''),
+  examDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Exam date must be in YYYY-MM-DD format')
+    .refine((val) => !isNaN(new Date(`${val}T00:00:00`).getTime()), 'Invalid date')
+    .optional(),
 });
 
 export type ValidatedCheckIn = z.infer<typeof studentCheckInSchema>;

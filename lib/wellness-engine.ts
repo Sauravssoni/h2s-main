@@ -21,6 +21,8 @@ import {
   EXAM_PHASE_PROTOCOLS,
   ALL_SUPPORT_RESOURCES,
 } from './constants';
+import { computeExamTimeline } from './exam-timeline';
+import { generateBuddyNotes } from './buddy-notes';
 import {
   detectCrisisKeywords,
   getSupportLevel,
@@ -660,8 +662,10 @@ export function generateWellnessPlan(input: StudentCheckInInput): WellnessPlan {
   const detectedStressLoop = detectStressLoop(input);
   const detectedPainPoints = detectPainPoints(input);
   const evidenceItems = buildEvidenceItems(input);
+  const examTimeline = computeExamTimeline(input);
 
-  return {
+  // Build partial plan to pass into buddy notes generator
+  const partialPlan: WellnessPlan = {
     snapshot,
     triggerAnalysis,
     resetSteps,
@@ -673,6 +677,12 @@ export function generateWellnessPlan(input: StudentCheckInInput): WellnessPlan {
     detectedStressLoop,
     detectedPainPoints,
     evidenceItems,
+    examTimeline,
     generatedAt: new Date().toISOString(),
   };
+
+  const buddyNotes = generateBuddyNotes(input, partialPlan, examTimeline);
+  partialPlan.buddyNotes = buddyNotes;
+
+  return partialPlan;
 }

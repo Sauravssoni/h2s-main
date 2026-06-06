@@ -1,43 +1,26 @@
-/* eslint-disable react-hooks/set-state-in-effect, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, react-hooks/exhaustive-deps */
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Timer, Play, Pause, Square, Coffee, BookOpen, Minimize2, Maximize2, BellRing } from 'lucide-react';
+import { Timer, Play, Pause, Square, Minimize2, BellRing } from 'lucide-react';
 import { useToast } from '@/lib/useToast';
 
 type TimerMode = 'focus' | 'break';
-
-interface SessionOption {
-  minutes: number;
-  label: string;
-}
-
-const FOCUS_OPTIONS: SessionOption[] = [
-  { minutes: 25, label: '25m Focus' },
-  { minutes: 50, label: '50m Deep Work' },
-];
-
-const BREAK_OPTIONS: SessionOption[] = [
-  { minutes: 5, label: '5m Quick Rest' },
-  { minutes: 15, label: '15m Long Break' },
-];
 
 export default function StudyTimer() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [mode, setMode] = useState<TimerMode>('focus');
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
-  const [hasPermission, setHasPermission] = useState<NotificationPermission>('default');
+  const [hasPermission, setHasPermission] = useState<NotificationPermission>(() => {
+    if (typeof window !== 'undefined' && 'Notification' in window) {
+      return Notification.permission;
+    }
+    return 'default';
+  });
   const toast = useToast();
   
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    if ('Notification' in window) {
-      setHasPermission(Notification.permission);
-    }
-  }, []);
 
   const requestNotificationPermission = async () => {
     if ('Notification' in window && hasPermission === 'default') {
@@ -49,15 +32,16 @@ export default function StudyTimer() {
     }
   };
 
-  const playChime = () => {
+  const playChime = useCallback(() => {
     try {
-      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-      const audioCtx = new AudioContext();
+      const AudioCtx = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const audioCtx = new AudioCtx();
       const oscillator = audioCtx.createOscillator();
       const gainNode = audioCtx.createGain();
       
       oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
+      oscillator.frequency.setValueAtTime(880, audioCtx.currentTime);
       oscillator.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 0.5);
       
       gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
@@ -68,10 +52,10 @@ export default function StudyTimer() {
       
       oscillator.start();
       oscillator.stop(audioCtx.currentTime + 1);
-    } catch (e) {
-      // Audio fallback failed
+    } catch {
+      // Audio context unavailable
     }
-  };
+  }, []);
 
   const logSession = (completedMode: TimerMode, durationMinutes: number) => {
     try {
@@ -85,8 +69,8 @@ export default function StudyTimer() {
         });
         localStorage.setItem(key, JSON.stringify(existing));
       }
-    } catch (e) {
-      // ignore
+    } catch {
+      // localStorage unavailable
     }
   };
 
@@ -108,21 +92,26 @@ export default function StudyTimer() {
     setIsRunning(false);
   };
 
+  const triggerAlertRef = useRef(triggerAlert);
+
+  useEffect(() => {
+    triggerAlertRef.current = triggerAlert;
+  });
+
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
       timerRef.current = setTimeout(() => {
         setTimeLeft(t => t - 1);
       }, 1000);
     } else if (isRunning && timeLeft <= 0) {
-      // Timer finished!
-      triggerAlert();
-      logSession(mode, mode === 'focus' ? 25 : 5); // Simplification, track exact selected time
+      triggerAlertRef.current();
+      logSession(mode, mode === 'focus' ? 25 : 5);
     }
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [isRunning, timeLeft, mode]); // removed triggerAlert, hasPermission dependencies to avoid re-triggering
+  }, [isRunning, timeLeft, mode]);
 
   const toggleTimer = () => {
     if (!isRunning && hasPermission === 'default') {
@@ -148,9 +137,6 @@ export default function StudyTimer() {
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  // Calculate progress for circular ring
-  const totalSeconds = mode === 'focus' ? 25 * 60 : 5 * 60; // We should probably store the selected total time, but for demo we assume 25 or 5 based on mode
-  const progress = ((totalSeconds - timeLeft) / totalSeconds) * 100;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 pointer-events-none">

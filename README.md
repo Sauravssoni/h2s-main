@@ -45,6 +45,8 @@ Results: Snapshot + Triggers + Reset Plan + Study Plan + Reflection Insight + Ca
 | Reflection insight | Safe, non-diagnostic reflection summary |
 | 2-minute calm exercise | Box breathing / grounding / naming the controllable |
 | 7-day journey dashboard | Streak, mood trend, stress trend, top triggers (localStorage) |
+| Exam timeline engine | Days-left counter, pace mode, timeline-aware study advice |
+| Buddy notes | 3–5 contextual notes per check-in, copy to clipboard |
 | Panic-to-Plan mode | 3-step rescue plan for overwhelmed states |
 | Safety support card | Crisis keyword bypass with Tele-MANAS resources |
 | AI enhancement (optional) | Gemini API for reflection insight and phase advice |
@@ -56,7 +58,7 @@ Results: Snapshot + Triggers + Reset Plan + Study Plan + Reflection Insight + Ca
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 14 App Router |
+| Framework | Next.js 16 App Router |
 | Language | TypeScript (strict mode) |
 | Styling | Tailwind CSS |
 | Validation | Zod |
@@ -70,8 +72,8 @@ Results: Snapshot + Triggers + Reset Plan + Study Plan + Reflection Insight + Ca
 ## Setup
 
 ```bash
-git clone https://github.com/Sauravssoni/hack-2-skill
-cd hack-2-skill
+git clone https://github.com/Sauravssoni/h2s-main
+cd h2s-main
 npm install
 cp .env.example .env.local
 # Optionally add GEMINI_API_KEY to .env.local
@@ -183,9 +185,9 @@ Key demo line: *"PrepBuddy doesn't just say 'calm down.' It identifies the exam-
 ## Rubric Mapping
 
 ### Code Quality ✅
-- Strict TypeScript with zero `any`
-- 15 modular components with clear boundaries
-- 8 focused lib modules (types, constants, validation, security, engine, AI, risk, storage, utils)
+- Strict TypeScript — zero `any`, zero `eslint-disable`
+- 20+ modular components with clear boundaries
+- 12 focused lib modules (types, constants, validation, security, engine, AI, risk, storage, utils, exam-timeline, buddy-notes, useToast)
 - Centralized types and constants
 - Small, single-purpose functions
 
@@ -207,8 +209,8 @@ Key demo line: *"PrepBuddy doesn't just say 'calm down.' It identifies the exam-
 - Memoized journey stats computation
 
 ### Testing ✅
-- 93 unit tests across 4 test files
-- Validation, risk detection, wellness engine, storage helpers all tested
+- 137 unit tests across 6 test files
+- Validation, risk detection, wellness engine, storage helpers, exam timeline, buddy notes all tested
 - Edge cases: empty inputs, NaN, very long strings, crisis keywords, out-of-range numbers
 
 ### Accessibility ✅

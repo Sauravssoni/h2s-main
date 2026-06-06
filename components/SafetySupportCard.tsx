@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { SafetySupport } from '@/lib/types';
 
 interface SafetySupportCardProps {
@@ -11,18 +11,17 @@ interface SafetySupportCardProps {
 export default function SafetySupportCard({ support, onOpenReset }: SafetySupportCardProps) {
   const [messagecopied, setMessageCopied] = useState(false);
   const [dismissed, setDismissed] = useState(false);
-  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
-  const [showToast, setShowToast] = useState(false);
-
-  useEffect(() => {
+  const [completedSteps, setCompletedSteps] = useState<number[]>(() => {
+    if (typeof window === 'undefined') return [];
     try {
       const saved = localStorage.getItem('prepbuddy:v1:panic_steps');
-      if (saved) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setCompletedSteps(JSON.parse(saved));
-      }
-    } catch {}
-  }, []);
+      if (saved) return JSON.parse(saved) as number[];
+    } catch {
+      // localStorage unavailable
+    }
+    return [];
+  });
+  const [showToast, setShowToast] = useState(false);
 
   const handleStepComplete = (step: number) => {
     if (completedSteps.includes(step)) return;
@@ -30,7 +29,9 @@ export default function SafetySupportCard({ support, onOpenReset }: SafetySuppor
     setCompletedSteps(newSteps);
     try {
       localStorage.setItem('prepbuddy:v1:panic_steps', JSON.stringify(newSteps));
-    } catch {}
+    } catch {
+      // localStorage unavailable
+    }
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
   };

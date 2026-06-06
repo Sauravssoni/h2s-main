@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, RotateCcw, X, Wind } from 'lucide-react';
 import type { ResetFeelingLabel } from '@/lib/types';
-import { RESET_FEELINGS, RESET_REFRAMES, RESET_NEXT_ACTIONS } from '@/lib/constants';
+import { RESET_FEELINGS, RESET_NEXT_ACTIONS } from '@/lib/constants';
 
 type ResetPhase = 'choose' | 'breathe' | 'reframe' | 'action';
 
@@ -74,11 +74,11 @@ export default function ResetTool({ onClose }: { onClose?: () => void }) {
       if (timerRef.current) clearTimeout(timerRef.current);
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [phase, isPaused]); // Removed breathePhaseIdx, cycleCount, countdown from deps to avoid re-triggering
+  // breathePhaseIdx, countdown, cycleCount are mutated by the timer — adding them as deps would retrigger infinitely
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, isPaused]);
 
   const currentBreathePhase = BREATHE_PHASES[breathePhaseIdx];
-  const reframes = RESET_REFRAMES[feeling];
-  // Override reframe per instructions
   const chosenReframe = "Your mock score is a compass, not a verdict.";
 
   const FEELING_EMOJI: Record<ResetFeelingLabel, string> = {

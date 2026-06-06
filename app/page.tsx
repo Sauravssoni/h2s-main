@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import type { StudentCheckInInput, WellnessPlan, JourneyEntry, JourneyStats, MascotName } from '@/lib/types';
-import { generateId, todayISODate, SAMPLE_STUDENT_INPUT } from '@/lib/utils';
+import { generateId, todayISODate } from '@/lib/utils';
 import {
   saveJourneyEntry,
   loadJourneyEntries,
@@ -21,7 +21,6 @@ import ErrorState from '@/components/ErrorState';
 import WhyPrepBuddy from '@/components/WhyPrepBuddy';
 import IsThisNormal from '@/components/IsThisNormal';
 import ResetTool from '@/components/ResetTool';
-import SafeActionCard from '@/components/SafeActionCard';
 
 type AppView = 'hero' | 'checkin' | 'loading' | 'results' | 'error' | 'reset';
 
@@ -242,7 +241,7 @@ export default function HomePage() {
       <div id="main-content">
         {view === 'hero' && (
           <>
-            <Hero onStart={handleStart} onSampleStudent={handleSampleStudent} onReset={handleOpenReset} />
+            <Hero onStart={handleStart} onSampleStudent={handleSampleStudent} />
             <WhyPrepBuddy />
             <IsThisNormal />
           </>

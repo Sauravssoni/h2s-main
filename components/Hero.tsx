@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { motion } from 'framer-motion';
@@ -7,10 +6,9 @@ import { ShieldCheck, Activity, BrainCircuit, HeartPulse, Shield, Lock } from 'l
 interface HeroProps {
   onStart: () => void;
   onSampleStudent: () => void;
-  onReset: () => void;
 }
 
-export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
+export default function Hero({ onStart, onSampleStudent }: HeroProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -24,12 +22,12 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
     show: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 20 } },
   };
 
-  const floatAnimation: any = {
+  const floatAnimation = {
     y: [0, -10, 0],
     transition: {
       duration: 6,
       repeat: Infinity,
-      ease: 'easeInOut',
+      ease: 'easeInOut' as const,
     },
   };
 

@@ -38,54 +38,78 @@ npm run build
 
 The following test suites exist in the `/tests/` directory and are executed via `npm run test`:
 
-### `/tests/risk.test.ts`
-- ✅ Detects direct crisis phrases (e.g., “I want to die”)
-- ✅ Detects hidden phrases (e.g., “sleep forever” and “never wake up”)
-- ✅ Handles mixed case and punctuation variations
-- ✅ Avoids obvious false positives (e.g., "I died laughing", "dead tired")
-- ✅ Returns `safetyMode: true` for high-risk input
+### `/tests/risk.test.ts` — 38 tests
+- ✅ Detects direct crisis phrases (e.g., "I want to die")
+- ✅ Detects suicide keyword, self-harm phrases, and "life over" phrases
+- ✅ Handles mixed case and empty strings
+- ✅ Returns `false` for normal exam stress text and non-matching text
+- ✅ Detects elevated risk for high stress + low sleep and crisis keywords in reflection
+- ✅ Returns correct support level (crisis, elevated, normal) for different input combinations
+- ✅ Detects somatic signals (chest tightness, panic attack)
+- ✅ Detects guilt signals (money-related, sacrifice language)
+- ✅ Detects isolation signals (lonely, nobody)
+- ✅ Detects toxic hustle (excessive study, guilty resting)
+- ✅ Detects imposter revision (forgot everything, nothing sticks)
+- ✅ Detects rank self-worth (worthless, failure)
+- ✅ Detects exam freeze (blanked out, went blank)
 
-### `/tests/wellness-engine.test.ts`
+### `/tests/wellness-engine.test.ts` — 28 tests
+- ✅ Returns plan with all required fields and valid ISO timestamp
 - ✅ High stress creates Heavy Day support
-- ✅ Low sleep changes study/recovery plan
-- ✅ Low confidence creates confidence recovery advice
-- ✅ Mock test score trigger creates Mock Hangover support
-- ✅ Parental pressure/reflection creates Silent Guilt support
-- ✅ Result waiting creates Result Limbo support
-- ✅ Exam day creates Exam Freeze protocol
-- ✅ Detects Score Rumination Loop
-- ✅ Detects Backlog Paralysis Loop
-- ✅ Detects Insomnia-Fatigue Loop
-- ✅ Detects Expectation Pressure Loop
-- ✅ Always returns one safe next action
+- ✅ Gives crisis status when crisis keywords present
+- ✅ Sets crisis level for crisis keywords, elevated for overwhelmed mood, normal for calm input
+- ✅ Provides panic-to-plan for elevated support level
+- ✅ Returns 3 reset steps, step 1 is always breathing for high stress
+- ✅ Returns at least 7 evidence items
+- ✅ Detects Score Rumination, Backlog Paralysis, Insomnia-Fatigue, and Result Limbo loops
+- ✅ Returns null for no loop indicators
+- ✅ Detects mock hangover, insomnia loop, and imposter revision pain points
+- ✅ Returns non-empty exam phase protocol for each of 5 phases
 
-### `/tests/validation.test.ts`
-- ✅ Validates required fields
-- ✅ Clamps stress/anxiety/sleep/energy/focus/confidence between 1 and 10
-- ✅ Caps reflection length
-- ✅ Caps trigger array length
-- ✅ Rejects or normalizes unknown enum values
-- ✅ Sanitizes unsafe text like `<script>` tags
+### `/tests/validation.test.ts` — 15 tests
+- ✅ Accepts fully valid input and rejects invalid enum values
+- ✅ Rejects stress level above 10 and below 1
+- ✅ Rejects study hours above max, accepts 0 (rest day)
+- ✅ Caps trigger arrays at max 14
+- ✅ Truncates long reflection text
+- ✅ Defaults reflection to empty string when omitted
+- ✅ `safeParseCheckIn` returns parsed object or null
+- ✅ `clampScale` clamps values, uses fallback for NaN
 
-### `/tests/storage.test.ts`
-- ✅ Handles empty localStorage safely
-- ✅ Handles corrupt localStorage without crashing
-- ✅ Saves check-in history
-- ✅ Clears local data
-- ✅ Generates weekly summary
-- ✅ Generates mentor/parent support summary
+### `/tests/storage.test.ts` — 12 tests
+- ✅ Handles empty, invalid, and corrupt localStorage safely
+- ✅ Saves and retrieves journey entries (prepends most recent first)
+- ✅ Clears stored entries
+- ✅ Computes correct average stress, streak counting (consecutive, gap detection)
+- ✅ Includes most common triggers
 
-### API & AI Fallback Tests (Manual / To Be Implemented)
-*(Note: Full end-to-end API integration tests are primarily covered by manual testing in Next.js to ensure real request lifecycle behaves correctly without mock drift).*
-- Accepts valid AI JSON
-- Rejects invalid AI JSON and falls back deterministically
-- Merges missing AI fields with deterministic fallback
-- Filters unsafe AI phrases
-- Ensures crisis mode bypasses AI
+### `/tests/exam-timeline.test.ts` — 29 tests
+- ✅ Parses valid YYYY-MM-DD dates, rejects malformed input
+- ✅ Returns correct days until exam (positive for future, negative for past, 0 for today)
+- ✅ Maps days-left to correct timeline phases (Long Runway, Build, Revision, Final Sprint, Exam Window, Result Waiting)
+- ✅ Returns Unknown when daysLeft is null
+- ✅ Overrides to Result Waiting for Result Waiting exam phase
+- ✅ Returns Recovery First for high stress (≥8) or low sleep (≤4)
+- ✅ Returns Steady, Tight but Manageable, Final Sprint, Exam Window for appropriate inputs
+- ✅ Returns appropriate advice for each phase
+- ✅ Computes complete timeline with correct phase and pace for real inputs
+
+### `/tests/buddy-notes.test.ts` — 15 tests
+- ✅ Returns between 3 and 5 notes, each with id, text, and reason
+- ✅ Notes are short (under 120 characters)
+- ✅ Includes mock score note for Mock test score trigger
+- ✅ Includes backlog note for Syllabus backlog trigger
+- ✅ Includes comparison note, sleep note, and parental pressure note
+- ✅ Returns safety-only notes for crisis keywords (no productivity affirmations)
+- ✅ Returns safety-only notes for crisis support level
+- ✅ Includes timeline-aware notes (recovery pace, runway, sprint)
+- ✅ Includes awareness note when stress loop is detected
+
+### API & AI Fallback Tests (Manual)
 - Valid request returns 200
 - Invalid request returns 400
-- Crisis request returns safetyMode true
-- Missing API key returns fallback plan
+- Crisis request bypasses AI, returns safety-first response
+- Missing API key returns deterministic fallback plan
 - Rate limit returns 429
 
 ---

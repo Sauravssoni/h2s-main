@@ -21,8 +21,8 @@ export default function SafeActionCard({ actionText }: SafeActionCardProps) {
       if (typeof window !== 'undefined') {
         localStorage.setItem('prepbuddy:v1:lastSafeActionCompleted', new Date().toISOString());
       }
-    } catch (e) {
-      // ignore
+    } catch {
+      // localStorage unavailable
     }
 
     // Hide toast after 3 seconds

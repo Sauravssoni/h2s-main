@@ -11,6 +11,8 @@ import EvidenceMode from './EvidenceMode';
 import SupportResources from './SupportResources';
 import ResetTool from './ResetTool';
 import SafeActionCard from './SafeActionCard';
+import ExamTimelineCard from './journey/ExamTimelineCard';
+import BuddyNotesCard from './journey/BuddyNotesCard';
 
 interface ResultsDashboardProps {
   plan: WellnessPlan;
@@ -174,6 +176,20 @@ export default function ResultsDashboard({
                 </p>
               </div>
             </motion.div>
+
+            {/* Exam Timeline */}
+            {plan.examTimeline && plan.examTimeline.daysLeft !== null && (
+              <motion.div variants={itemVariants} className="card-hover rounded-2xl">
+                <ExamTimelineCard timeline={plan.examTimeline} />
+              </motion.div>
+            )}
+
+            {/* Buddy Notes */}
+            {plan.buddyNotes && plan.buddyNotes.length > 0 && (
+              <motion.div variants={itemVariants} className="card-hover rounded-2xl">
+                <BuddyNotesCard notes={plan.buddyNotes} />
+              </motion.div>
+            )}
 
             {/* Journey dashboard */}
             <motion.div variants={itemVariants} className="card-hover rounded-2xl">

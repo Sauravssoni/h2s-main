@@ -2,7 +2,24 @@
 
 /* ─── PrepBuddy Premium Navy Tokens ─── */
 :root {
-  /* Dark premium theme */
+  /* Premium Light Theme (Beige/Soft White) */
+  --color-bg: #FDFBF7;
+  --color-card: #FFFFFF;
+  --color-card-border: #EAE5DF;
+  --color-card-hover: #F9F7F4;
+  --color-text: #1C1917;
+  --color-muted: #78716C;
+  --color-subtle: #A8A29E;
+  --color-lavender: #8C7A6B; /* Muted brown/taupe for light theme instead of lavender */
+  --color-indigo: #8B5CF6;
+  --color-teal: #14B8A6;
+  --color-amber: #F59E0B;
+  --color-danger: #EF4444;
+  --color-success: #10B981;
+}
+
+.dark {
+  /* Dark premium theme (Deep Navy) */
   --color-bg: #0F172A;
   --color-card: #111827;
   --color-card-border: #1E293B;

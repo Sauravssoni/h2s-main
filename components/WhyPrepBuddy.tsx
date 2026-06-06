@@ -2,37 +2,37 @@ import React from 'react';
 
 const reasons = [
   {
-    title: 'Detects exam stress loops, not just mood',
-    description: 'Goes beyond "how do you feel" to identify specific cognitive distortions and procrastination loops common in exam prep.',
+    title: 'Mock Hangover Detector',
+    description: 'Identifies specific exam-stress loops and procrastination cycles common in exam prep after a bad mock score.',
     icon: '🔁',
   },
   {
-    title: 'Gives one safe next action, not long advice',
-    description: 'When you\'re overwhelmed, the last thing you need is a 10-step plan. We give you a single, micro-action to reset.',
+    title: 'Backlog Paralysis Breaker',
+    description: 'When the syllabus feels infinite, we give you a micro-action to reset and start moving forward again.',
     icon: '🎯',
   },
   {
-    title: 'Works without login or PII',
+    title: 'Local-Only Journey',
     description: 'No accounts, no tracking. Your check-ins stay entirely on your device for complete privacy.',
     icon: '🔒',
   },
   {
-    title: 'Crisis safety runs before AI',
+    title: 'Crisis Safety Before AI',
     description: 'Built-in deterministic safety checks ensure you are directed to human help instantly if a crisis is detected.',
     icon: '🛡️',
   },
   {
-    title: 'Local journey stays on device',
-    description: 'Track your progress and triggers over time without your data ever leaving your browser.',
+    title: 'One Safe Next Step',
+    description: 'Track your progress and triggers over time and get exactly one safe next step to focus on.',
     icon: '📱',
   },
 ];
 
 export default function WhyPrepBuddy() {
   return (
-    <section className="py-16 bg-[#FFFFFF] border-y border-[#EAE5DF]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-black text-[#1C1917] text-center mb-10">
+    <section className="py-16 bg-[var(--color-bg)] border-y border-[var(--color-card-border)] relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2 className="text-2xl sm:text-3xl font-black text-[var(--color-text)] text-center mb-10">
           Built for exam stress, not generic wellness.
         </h2>
         
@@ -40,16 +40,16 @@ export default function WhyPrepBuddy() {
           {reasons.map((reason, idx) => (
             <div 
               key={idx} 
-              className="bg-[#EAE5DF] border border-[#D6D1CB] rounded-2xl p-6 flex flex-col items-start gap-4 hover:border-[#8C7A6B] transition-colors"
+              className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-2xl p-6 flex flex-col items-start gap-4 hover:border-[var(--color-lavender)]/50 transition-colors shadow-sm glass-card"
             >
-              <div className="w-12 h-12 bg-[#FDFBF7] rounded-xl flex items-center justify-center text-2xl border border-[#D6D1CB]">
+              <div className="w-12 h-12 bg-[var(--color-bg)] rounded-xl flex items-center justify-center text-2xl border border-[var(--color-card-border)] shadow-sm">
                 {reason.icon}
               </div>
               <div>
-                <h3 className="text-[#1C1917] font-bold text-lg mb-2">
+                <h3 className="text-[var(--color-text)] font-bold text-lg mb-2">
                   {reason.title}
                 </h3>
-                <p className="text-[#78716C] text-sm leading-relaxed">
+                <p className="text-[var(--color-muted)] text-sm leading-relaxed font-medium">
                   {reason.description}
                 </p>
               </div>

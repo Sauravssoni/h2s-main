@@ -158,7 +158,7 @@ export function detectStressLoop(input: StudentCheckInInput): DetectedStressLoop
       id: 'score-rumination',
       name: 'Score Rumination Loop',
       chain: 'Mock score → comparison → low confidence.',
-      action: 'Review only 3 mistakes. Do not judge your future from one paper.',
+      action: 'Review only 3 mock mistakes today.',
     };
   }
 

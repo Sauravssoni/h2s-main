@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { motion } from 'framer-motion';
@@ -67,19 +68,24 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={onStart}
-              className="btn-primary w-full sm:w-auto px-8 py-4 rounded-xl text-lg font-bold flex justify-center items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-teal)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+              className="btn-primary w-full sm:w-auto px-8 py-4 rounded-xl text-lg font-bold flex justify-center items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-teal)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] whitespace-nowrap"
               aria-label="Start your 60-second check-in"
             >
-              Start 60-sec Check-In <span aria-hidden="true">→</span>
+              Start Check-In <span aria-hidden="true">→</span>
             </button>
-            <button
-              onClick={onSampleStudent}
-              className="btn-secondary w-full sm:w-auto px-8 py-4 rounded-xl text-lg font-bold flex justify-center items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
-              aria-label="Load a sample heavy day scenario"
-            >
-              <Activity className="w-5 h-5" />
-              Try Demo Student
-            </button>
+            <div className="flex flex-col items-center sm:items-start w-full sm:w-auto">
+              <button
+                onClick={onSampleStudent}
+                className="btn-secondary w-full px-8 py-4 rounded-xl text-lg font-bold flex justify-center items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lavender)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+                aria-label="Load a sample heavy day scenario"
+              >
+                <Activity className="w-5 h-5" />
+                Try Demo Student
+              </button>
+              <p className="text-[10px] sm:text-xs text-[var(--color-subtle)] font-medium mt-2 px-1">
+                Loads a heavy JEE mock-test scenario.
+              </p>
+            </div>
           </motion.div>
 
           {/* Trust Pills */}
@@ -143,16 +149,16 @@ export default function Hero({ onStart, onSampleStudent, onReset }: HeroProps) {
             <div className="bg-[var(--color-bg)] p-4 rounded-2xl border border-[var(--color-card-border)] mb-4">
               <p className="text-xs font-bold text-[var(--color-teal)] mb-2 flex items-center gap-2">
                 <Activity className="w-3.5 h-3.5" />
-                Detected Loop
+                Detected Exam Stress Loop
               </p>
-              <p className="text-sm font-medium text-[var(--color-text)]">Score Rumination</p>
+              <p className="text-sm font-medium text-[var(--color-text)]">Score Rumination Loop</p>
             </div>
 
             {/* Action */}
             <div className="bg-[var(--color-card)] p-4 rounded-2xl border border-[var(--color-card-border)] shadow-md">
-              <p className="text-xs font-bold text-[var(--color-lavender)] mb-2">One Safe Step</p>
+              <p className="text-xs font-bold text-[var(--color-lavender)] mb-2">One Safe Next Step</p>
               <p className="text-sm text-[var(--color-muted)] leading-relaxed font-medium">
-                Review 3 mistakes today. Do not restart the entire syllabus.
+                Review only 3 mock mistakes today.
               </p>
             </div>
             

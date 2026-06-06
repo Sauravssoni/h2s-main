@@ -48,7 +48,7 @@ export default function ResultsDashboard({
     : 'You are maintaining momentum. Stay steady.';
   
   // Safe action step
-  const safeAction = plan.studyRecoveryPlan?.recoveryAction || plan.resetSteps[0]?.action || 'Take a 5 minute break to step away from your desk.';
+  const safeAction = plan.detectedStressLoop?.action || plan.studyRecoveryPlan?.recoveryAction || plan.resetSteps[0]?.action || 'Take a 5 minute break to step away from your desk.';
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-8 space-y-6" id="results-main">
